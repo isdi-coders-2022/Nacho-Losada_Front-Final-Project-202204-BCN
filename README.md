@@ -85,7 +85,7 @@
 - Renderiza 3 iconos con los campeones recibidos del segundo rol.
 - Renderiza un texto con la descripción recibida.
 
-## LoginForm
+## _LoginForm_
 
 - Renderiza un campo de entrada de texto con el texto "Usuario"
 - Renderiza un campo de entrada de texto con el texto "Contraseña"
@@ -93,7 +93,7 @@
 - Renderiza un link con el texto "No tienes cuenta? Regístrate aquí"
 - Renderiza una imágen de un Poro si se navega un ordenador.
 
-## RegisterForm
+## _RegisterForm_
 
 - Renderiza un campo de entrada de texto con el texto "Nombre de usuario"
 - Renderiza un campo de entrada de texto con el texto "Contraseña"
@@ -103,7 +103,7 @@
 - Renderiza un link con el texto "Ya tienes cuenta? Inicia sesión aquí"
 - Renderiza una imágen de un Poro si se navega un ordenador.
 
-## Create
+## _Create_
 
 - Renderiza un campo de entrada de texto con el texto "Nombre de invocador"
 - Renderiza un campo de entrada de texto con el texto "Rango"
