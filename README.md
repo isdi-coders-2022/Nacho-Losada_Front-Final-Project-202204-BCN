@@ -1,46 +1,116 @@
-# Getting Started with Create React App
+# App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- Renderizar un componente navbar si el viewport es un escritorio
+- Renderizar un componente Header
 
-## Available Scripts
+## _Header_
 
-In the project directory, you can run:
+- Renderizar un icono de menu en la versión mobile
+- Renderizar un h1 con el texto "Lolingo"
 
-### `npm start`
+## _Burguer_
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Al ser clicado, renderizar un menu desplegable
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## _Menu_
 
-### `npm test`
+- Renderizar un link con el texto "Login"
+- Renderizar un link con el texto "Register"
+- Renderizar una cenefa encima y debajo de los links.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## _NavBar_
 
-### `npm run build`
+- No renderizar nada si se accede desde un movil.
+- Renderizar un link con el texto "Login" cuando no hay ningún usuario logado.
+- Renderizar un link con el texto "Register" cuando no hay ningún usuario logado.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Renderizar el texto "Hola" y el nombre del usuario cuando este está logado.
+- Renderizar un link con el texto "Mis invocadores" cuando haya un usuario logado.
+- Renderizar un link con el texto "Nueva Ficha" cuando haya un usuario logado.
+- Renderizar un link con el texto "Salir" cuando haya un usuario logado pasándole la función de deslogar.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## _Footer_
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Renderizar el componente Navigation cuando se accede desde un móvil.
+- Renderizar el componente Pagination cuando se acceda desde un ordenador y si el usuario está navegando en el listado de invocadores genera o en el listado de invocadores favoritos.
 
-### `npm run eject`
+## _Navigation_
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Renderizar un link con el icono de "home".
+- Renderizar un link con el icono de "añadir".
+- Renderizar un link con el icono de "favoritos"
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## _Pagination_
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Renderizar un botón.
+- Renderziar el número de la página actual recibido segido del texto "/" y el número de páginas totales recibido.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## _SummonerList_
 
-## Learn More
+- Renderizar el componente RoleFilter.
+- Renderizar el componente RankFilter.
+- Renderizar tantos Summoners como reciba.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## _RoleFilter_
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Renderizar el texto "Rol".
+- Renderizar una lista desplegable con el texto "Elige un Rol"
+
+## _RankFilter_
+
+- Renderizar el texto "Rango".
+- Renderizar una lista desplegable con el texto "Elige el Rango".
+
+## _Summoner_
+
+- Renderiza el nombre de invocador recibido.
+- Renderiza una imagen con el rango recibido.
+- Renderiza un texto con el rango recibido.
+- Renderiza un icono con el primer rol recibido.
+- Renderiza 3 iconos con los campeones recibidos del primer rol.
+- Renderiza un icono con el segundo rol recibido.
+- Renderiza 3 iconos con los campeones recibidos del segundo rol.
+- Renderiza un icono de un corazón si hay un usuario logado y éste no lo tiene añadido a la lista de favoritos.
+- Renderiza un icono de un eliminar si hay un usuario logado y éste lo tiene añadido a la lista de favoritos.
+- Renderiza un icono de editar si hay un usuario logado y éste es el creador del invocador.
+
+## _SummonerDetail_
+
+- Renderiza el nombre de invocador recibido.
+- Renderiza una imagen con el rango recibido.
+- Renderiza un texto con el rango recibido.
+- Renderiza un icono con el primer rol recibido
+- Renderiza 3 iconos con los campeones recibidos del primer rol.
+- Renderiza un icono con el segundo rol recibido.
+- Renderiza 3 iconos con los campeones recibidos del segundo rol.
+- Renderiza un texto con la descripción recibida.
+
+## LoginForm
+
+- Renderiza un campo de entrada de texto con el texto "Usuario"
+- Renderiza un campo de entrada de texto con el texto "Contraseña"
+- Renderiza un botón pasándole el texto "Login" y la función de submit
+- Renderiza un link con el texto "No tienes cuenta? Regístrate aquí"
+- Renderiza una imágen de un Poro si se navega un ordenador.
+
+## RegisterForm
+
+- Renderiza un campo de entrada de texto con el texto "Nombre de usuario"
+- Renderiza un campo de entrada de texto con el texto "Contraseña"
+- Renderiza un campo de entrada de texto con el texto "Tu nombre"
+- Renderiza un campo de entrada de texto con el texto "Correo electrónico"
+- Renderiza un botón pasándole el texto "Crear cuenta" y la función de submit
+- Renderiza un link con el texto "Ya tienes cuenta? Inicia sesión aquí"
+- Renderiza una imágen de un Poro si se navega un ordenador.
+
+## Create
+
+- Renderiza un campo de entrada de texto con el texto "Nombre de invocador"
+- Renderiza un campo de entrada de texto con el texto "Rango"
+- Renderiza un campo de entrada de texto con el texto "Rol 1"
+- Renderiza un campo de entrada de texto con el texto "Elige 3 campeones"
+- Renderiza un campo de entrada de texto con el texto "Rol 2"
+- Renderiza un campo de entrada de texto con el texto "Elige 3 campeones"
+- Renderiza un campo de area de texto con el texto "Elige una descripción"
+- Renderiza un botón pasándole el texto "Crear ficha" y la función de submit
+- Renderiza una imágen de un Poro si se navega un ordenador.
