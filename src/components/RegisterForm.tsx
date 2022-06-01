@@ -1,6 +1,5 @@
 import { ChangeEventHandler, useEffect, useState } from "react";
 import styled from "styled-components";
-import { useAppDispatch } from "../redux/hooks/hooks";
 import { registerUserThunk } from "../redux/thunks/thunks";
 
 const RegisterFormStyle = styled.div`
@@ -21,7 +20,6 @@ const RegisterFormStyle = styled.div`
 `;
 
 const RegisterForm = (): JSX.Element => {
-  const dispatch = useAppDispatch();
   const blankData = {
     username: "",
     password: "",
@@ -55,8 +53,7 @@ const RegisterForm = (): JSX.Element => {
 
   const submitRegister = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    dispatch(registerUserThunk(formData));
-
+    registerUserThunk(formData);
     resetForm();
   };
 
