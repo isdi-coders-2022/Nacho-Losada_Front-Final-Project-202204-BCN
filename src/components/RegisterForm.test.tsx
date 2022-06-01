@@ -1,5 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { Provider } from "react-redux";
+import { store } from "../redux/store/store";
 import RegisterForm from "./RegisterForm";
 
 describe("Given a RegisterForm", () => {
@@ -7,7 +9,11 @@ describe("Given a RegisterForm", () => {
     test("Then it should show a button with the text 'Crear cuenta' inside", () => {
       const expectedText = "Crear cuenta";
 
-      render(<RegisterForm />);
+      render(
+        <Provider store={store}>
+          <RegisterForm />
+        </Provider>
+      );
       const button = screen.getByRole("button");
 
       expect(button.innerHTML).toBe(expectedText);
@@ -18,7 +24,11 @@ describe("Given a RegisterForm", () => {
     test("Then the username input value should be 'Salami'", () => {
       const inputText = "Salami";
 
-      render(<RegisterForm />);
+      render(
+        <Provider store={store}>
+          <RegisterForm />
+        </Provider>
+      );
       const input = screen.getByPlaceholderText("Usuario");
       userEvent.type(input, inputText);
 
@@ -28,7 +38,11 @@ describe("Given a RegisterForm", () => {
 
   describe("When it's rendered and the user fills and submit the form", () => {
     test("Then the form inputs should be cleared", () => {
-      render(<RegisterForm />);
+      render(
+        <Provider store={store}>
+          <RegisterForm />
+        </Provider>
+      );
       const inputText = "Salami";
       const expectedRestoredText = "";
 
