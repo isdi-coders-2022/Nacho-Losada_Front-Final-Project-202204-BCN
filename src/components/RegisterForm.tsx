@@ -1,5 +1,7 @@
 import { ChangeEventHandler, useEffect, useState } from "react";
 import styled from "styled-components";
+import { useAppDispatch } from "../redux/hooks/hooks";
+import { registerUserThunk } from "../redux/thunks/thunks";
 
 const RegisterFormStyle = styled.div`
   .register-form {
@@ -19,6 +21,7 @@ const RegisterFormStyle = styled.div`
 `;
 
 const RegisterForm = (): JSX.Element => {
+  const dispatch = useAppDispatch();
   const blankData = {
     username: "",
     password: "",
@@ -27,8 +30,8 @@ const RegisterForm = (): JSX.Element => {
   };
 
   const [formData, setFormData] = useState(blankData);
-
   const [buttonDisable, setButtonDisable] = useState(true);
+
   useEffect(() => {
     if (
       formData.username !== "" &&
@@ -50,15 +53,17 @@ const RegisterForm = (): JSX.Element => {
     setFormData({ ...formData, [event.target.id]: event.target.value });
   };
 
-  const submitLogin = (event: React.FormEvent<HTMLFormElement>) => {
+  const submitRegister = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    dispatch(registerUserThunk(formData));
+
     resetForm();
   };
 
   return (
     <RegisterFormStyle>
       <form
-        onSubmit={submitLogin}
+        onSubmit={submitRegister}
         autoComplete="off"
         noValidate
         className="register-form"
