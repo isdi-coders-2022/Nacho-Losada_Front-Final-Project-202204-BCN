@@ -11,18 +11,12 @@ const Header = (): JSX.Element => {
       width: fit-content;
       margin: 0;
     }
-    .header--menu-ico {
-      position: absolute;
-      left: 40px;
-      top: 30px;
-    }
   `;
 
   return (
     <>
       <Menu />
       <HeaderStyle>
-        <img src="icons/menu.svg" alt="" className="header--menu-ico"></img>
         <h1 className="title">Lolingo</h1>
       </HeaderStyle>
     </>
