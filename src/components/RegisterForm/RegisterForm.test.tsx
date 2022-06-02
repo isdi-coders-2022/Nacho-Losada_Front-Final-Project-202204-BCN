@@ -54,8 +54,8 @@ describe("Given a RegisterForm", () => {
       userEvent.type(nameInput, inputText);
       const emailInput = screen.getByPlaceholderText("Correo electrónico");
       userEvent.type(emailInput, inputText);
-
       userEvent.click(screen.getByText("Crear cuenta"));
+
       expect(userInput).toHaveProperty("value", expectedRestoredText);
     });
   });

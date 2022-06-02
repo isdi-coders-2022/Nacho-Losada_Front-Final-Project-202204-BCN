@@ -7,7 +7,10 @@ const userSlice = createSlice({
     username: "",
     logged: localStorage.getItem("token") ? true : false,
   },
-  reducers: {},
+  reducers: {
+    login: (user, action) => ({ ...action.payload, logged: true }),
+  },
 });
 
+export const { login: loginActionCreator } = userSlice.actions;
 export default userSlice.reducer;

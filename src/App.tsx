@@ -1,12 +1,12 @@
 import React from "react";
 import Header from "./components/Header/Header";
-import RegisterForm from "./components/RegisterForm/RegisterForm";
+import LoginForm from "./components/LoginForm/LoginForm";
 
 function App() {
   return (
     <>
       <Header />
-      <RegisterForm />
+      <LoginForm />
     </>
   );
 }
