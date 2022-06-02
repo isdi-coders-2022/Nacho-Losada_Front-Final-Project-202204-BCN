@@ -1,6 +1,6 @@
 import { ChangeEventHandler, useEffect, useState } from "react";
 import styled from "styled-components";
-import { registerUserThunk } from "../redux/thunks/thunks";
+import { registerUserThunk } from "../../redux/thunks/thunks";
 
 const RegisterFormStyle = styled.div`
   .register-form {

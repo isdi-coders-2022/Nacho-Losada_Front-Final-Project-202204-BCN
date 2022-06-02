@@ -1,10 +1,11 @@
 import React from "react";
-import RegisterForm from "./components/RegisterForm";
+import Header from "./components/Header/Header";
+import RegisterForm from "./components/RegisterForm/RegisterForm";
 
 function App() {
   return (
     <>
-      <h1>Lolingo</h1>
+      <Header />
       <RegisterForm />
     </>
   );
