@@ -1,6 +1,15 @@
+import { useNavigate } from "react-router-dom";
 import MenuStyled from "./MenuStyled";
 
 const Menu = (): JSX.Element => {
+  const navigate = useNavigate();
+  const goToRegister = () => {
+    navigate("/register");
+  };
+  const goToLogin = () => {
+    navigate("/login");
+  };
+
   return (
     <MenuStyled>
       <input type="checkbox" className="toggler" />
@@ -14,10 +23,14 @@ const Menu = (): JSX.Element => {
               <div className="menu__separator"></div>
             </li>
             <li>
-              <p className="menu__link">Login</p>
+              <p className="menu__link" onClick={goToLogin}>
+                Login
+              </p>
             </li>
             <li>
-              <p className="menu__link">Register</p>
+              <p className="menu__link" onClick={goToRegister}>
+                Register
+              </p>
             </li>
             <li>
               <div className="menu__separator"></div>
