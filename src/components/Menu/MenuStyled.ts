@@ -94,6 +94,7 @@ const MenuStyled = styled.div`
     top: 70px;
     padding-left: 10px;
     visibility: hidden;
+    justify-content: center;
 
     li {
       list-style: none;
@@ -105,7 +106,6 @@ const MenuStyled = styled.div`
       -webkit-text-fill-color: transparent;
 
       font-size: 2rem;
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
     }
   }
