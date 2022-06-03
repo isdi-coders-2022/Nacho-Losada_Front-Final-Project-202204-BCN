@@ -105,7 +105,7 @@ const MenuStyled = styled.div`
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
 
-      font-size: 2rem;
+      font-size: 2.5rem;
       margin: 0;
     }
     a {
