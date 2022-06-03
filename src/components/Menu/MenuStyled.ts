@@ -108,6 +108,9 @@ const MenuStyled = styled.div`
       font-size: 2rem;
       margin: 0;
     }
+    a {
+      text-decoration: none;
+    }
   }
 
   .toggler:checked ~ .menu > div > ul {
