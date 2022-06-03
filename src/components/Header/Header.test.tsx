@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 import { store } from "../../redux/store/store";
 import Header from "./Header";
 
@@ -10,7 +11,9 @@ describe("Given a Header component", () => {
 
       render(
         <Provider store={store}>
-          <Header />
+          <BrowserRouter>
+            <Header />
+          </BrowserRouter>
         </Provider>
       );
 
