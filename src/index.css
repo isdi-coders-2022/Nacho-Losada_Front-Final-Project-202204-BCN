@@ -7,6 +7,19 @@ body {
   font-family: "Marcellus", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #0e292c;
+}
+
+body::after {
+  content: "";
+  background: url("/public/images/background-texture.png");
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
 }
 
 code {
