@@ -8,9 +8,8 @@ const MenuStyled = styled.div`
 
   .menu {
     background: #0e292c;
-    width: 0%;
-    height: 300px;
-
+    width: 200px;
+    height: 0;
     transition: all 0.4s ease;
   }
 
@@ -85,6 +84,8 @@ const MenuStyled = styled.div`
 
   .toggler:checked ~ .menu {
     width: 200px;
+    height: 300px;
+    transition: all 0.4s ease;
   }
 
   .menu__list {
