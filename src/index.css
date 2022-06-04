@@ -26,3 +26,24 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.Toastify {
+  --linear-gold: linear-gradient(90deg, #e6a94d, #ffffff);
+
+  --toastify-color-light: var(--linear-gold);
+  --toastify-color-dark: var(--linear-gold);
+
+  --toastify-font-family: "Marcellus", "sans-serif";
+  --toastify-text-color-light: #000000;
+  --toastify-text-color-dark: #000000;
+
+  --toastify-color-info: #3498db;
+  --toastify-color-success: #1a8008;
+  --toastify-color-warning: #896e02;
+  --toastify-color-error: #b51001;
+
+  --toastify-icon-color-info: var(--toastify-color-info);
+  --toastify-icon-color-success: var(--toastify-color-success);
+  --toastify-icon-color-warning: var(--toastify-color-warning);
+  --toastify-icon-color-error: var(--toastify-color-error);
+}
