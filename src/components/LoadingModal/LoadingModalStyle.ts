@@ -29,11 +29,12 @@ const LoadingModalStyle = styled.div`
     animation: pulse 5s infinite;
     margin-top: 0;
     margin-bottom: 20px;
+    animation: pulse-white 2s infinite;
   }
 
-  .load {
-    box-shadow: 0 0 0 0 rgba(255, 255, 255, 1);
-    animation: pulse-white 2s infinite;
+  .hide {
+    visibility: hidden;
+    margin-bottom: 50000px;
   }
 
   @keyframes pulse-white {
