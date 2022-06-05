@@ -7,11 +7,14 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useAppSelector } from "./redux/hooks/hooks";
 
 function App(): JSX.Element {
+  const isLoading: boolean = useAppSelector((state) => state.ui.loading);
+
   return (
     <>
-      <LoadingModal />
+      {isLoading && <LoadingModal />}
       <ToastContainer
         position="top-center"
         autoClose={3000}
