@@ -8,6 +8,7 @@ import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useAppSelector } from "./redux/hooks/hooks";
+import SummonersPage from "./pages/SummonersPage/SummonersPage";
 
 function App(): JSX.Element {
   const isLoading: boolean = useAppSelector((state) => state.ui.loading);
@@ -28,6 +29,7 @@ function App(): JSX.Element {
       <Header />
       <Routes>
         <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="/summoners" element={<SummonersPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
       </Routes>
