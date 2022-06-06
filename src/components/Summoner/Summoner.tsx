@@ -4,7 +4,7 @@ interface Props {
   summoner: ISummoner;
 }
 
-interface ISummoner {
+export interface ISummoner {
   summonerName: string;
   creatorName: string;
   rankImage: string;
