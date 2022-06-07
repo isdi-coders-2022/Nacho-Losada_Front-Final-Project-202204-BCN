@@ -22,7 +22,6 @@ const SummonersPage = (): JSX.Element => {
       {summonersList.map((summoner: ISummoner) => (
         <li className="summoner" key={summoner.summonerName}>
           <Summoner summoner={summoner} />
-          <p>Japi</p>
         </li>
       ))}
       ;

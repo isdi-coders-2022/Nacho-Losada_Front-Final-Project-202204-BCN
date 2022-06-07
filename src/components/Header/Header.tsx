@@ -6,6 +6,16 @@ const Header = (): JSX.Element => {
     padding-top: 20px;
     display: flex;
     justify-content: center;
+    position: sticky;
+    top: 0;
+    height: 110px;
+
+    background: linear-gradient(
+      0deg,
+      rgb(7, 21, 22, 0) 0%,
+      #071516da 30%,
+      #071516 100%
+    );
 
     .title {
       width: fit-content;
@@ -21,8 +31,8 @@ const Header = (): JSX.Element => {
 
   return (
     <>
-      <Menu />
       <HeaderStyle>
+        <Menu />
         <h1 className="title">Lolingo</h1>
       </HeaderStyle>
     </>
