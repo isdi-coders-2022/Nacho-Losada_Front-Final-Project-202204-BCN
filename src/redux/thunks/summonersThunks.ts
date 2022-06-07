@@ -1,5 +1,8 @@
 import axios from "axios";
-import { loadListActionCreator } from "../features/summonersSlice";
+import {
+  deleteSummonerActionCreator,
+  loadListActionCreator,
+} from "../features/summonersSlice";
 import { loadOffActionCreator, loadOnActionCreator } from "../features/uiSlice";
 import { AppDispatch } from "../store/store";
 
@@ -16,3 +19,11 @@ export const loadSummonersThunk = () => async (dispatch: AppDispatch) => {
     dispatch(loadOffActionCreator());
   }
 };
+
+export const deleteSummonerThunk =
+  (idToDelete: string) => async (dispatch: AppDispatch) => {
+    await axios.delete(
+      `${process.env.REACT_APP_API_URL}summoners/${idToDelete}`
+    );
+    dispatch(deleteSummonerActionCreator(idToDelete));
+  };
