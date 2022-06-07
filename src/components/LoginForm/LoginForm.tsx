@@ -1,4 +1,5 @@
 import { ChangeEventHandler, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useAppDispatch } from "../../redux/hooks/hooks";
 import { loginUserThunk } from "../../redux/thunks/thunks";
@@ -29,6 +30,7 @@ const LoginForm = (): JSX.Element => {
   const [formData, setFormData] = useState(blankData);
   const [buttonDisable, setButtonDisable] = useState(true);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (formData.username !== "" && formData.password !== "") {
@@ -49,6 +51,7 @@ const LoginForm = (): JSX.Element => {
   const submitLogin = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     dispatch(loginUserThunk(formData));
+    navigate("/summoners");
 
     resetForm();
   };
