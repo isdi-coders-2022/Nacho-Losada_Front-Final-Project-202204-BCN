@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import FooterStyle from "./FooterStyle";
 
 const Footer = (): JSX.Element => {
@@ -6,7 +7,9 @@ const Footer = (): JSX.Element => {
       <FooterStyle>
         <ul className="footer__icon-list">
           <li>
-            <img src="icons/home.svg" alt="" className="footer__icon" />
+            <NavLink to="/summoners">
+              <img src="icons/home.svg" alt="" className="footer__icon" />
+            </NavLink>
           </li>
           <li>
             <img src="icons/add.svg" alt="" className="footer__icon" />
