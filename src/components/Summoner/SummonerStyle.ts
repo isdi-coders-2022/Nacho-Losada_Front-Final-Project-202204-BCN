@@ -5,7 +5,7 @@ const SummonerStyle = styled.div`
   border-radius: 10px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
   margin-bottom: 20px;
   align-content: center;
 
