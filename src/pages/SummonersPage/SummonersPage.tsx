@@ -4,7 +4,10 @@ import Summoner, { ISummoner } from "../../components/Summoner/Summoner";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
 import { loadSummonersThunk } from "../../redux/thunks/summonersThunks";
 
-const SummonersPageStyle = styled.li``;
+const SummonersPageStyle = styled.ul`
+  list-style: none;
+  padding: 0 20px;
+`;
 
 const SummonersPage = (): JSX.Element => {
   const summonersList: ISummoner[] = useAppSelector((state) => state.summoners);
@@ -15,17 +18,15 @@ const SummonersPage = (): JSX.Element => {
   }, [dispatch]);
 
   return (
-    <ul>
-      <SummonersPageStyle>
-        {summonersList.map((summoner: ISummoner) => (
-          <li className="summoner" key={summoner.summonerName}>
-            <Summoner summoner={summoner} />
-            <p>Japi</p>
-          </li>
-        ))}
-        ;
-      </SummonersPageStyle>
-    </ul>
+    <SummonersPageStyle>
+      {summonersList.map((summoner: ISummoner) => (
+        <li className="summoner" key={summoner.summonerName}>
+          <Summoner summoner={summoner} />
+          <p>Japi</p>
+        </li>
+      ))}
+      ;
+    </SummonersPageStyle>
   );
 };
 
