@@ -12,6 +12,7 @@ const Header = (): JSX.Element => {
       margin: 0;
       background: linear-gradient(90deg, #e6a94d 50%, #dfd1b2 100%);
       -webkit-background-clip: text;
+      background-clip: text;
       -webkit-text-fill-color: transparent;
       font-size: 45px;
       text-shadow: 3px 3px 1px rgba(230, 169, 77, 0.25);
