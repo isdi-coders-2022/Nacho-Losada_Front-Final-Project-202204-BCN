@@ -7,6 +7,10 @@ import { loadSummonersThunk } from "../../redux/thunks/summonersThunks";
 const SummonersPageStyle = styled.ul`
   list-style: none;
   padding: 0 20px;
+
+  li:last-child {
+    margin-bottom: 60px;
+  }
 `;
 
 const SummonersPage = (): JSX.Element => {
