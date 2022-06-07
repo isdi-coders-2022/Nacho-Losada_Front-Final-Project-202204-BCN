@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const FooterStyle = styled.nav`
-  position: absolute;
+  position: sticky;
   bottom: 0;
   padding: 20px;
   width: 100%;
