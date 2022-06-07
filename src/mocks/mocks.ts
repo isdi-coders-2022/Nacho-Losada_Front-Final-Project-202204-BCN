@@ -8,6 +8,7 @@ export const mockSummoner = {
   secondRole: "/images/positions/Top.png",
   secondRoleChamps: ["Zac", "Annie", "Graves"],
   description: "Lolen Ipsum",
+  id: "123456",
 };
 
 export const mockSummoners = [

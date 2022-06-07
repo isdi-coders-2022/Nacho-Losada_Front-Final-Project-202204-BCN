@@ -1,3 +1,5 @@
+import { useAppDispatch } from "../../redux/hooks/hooks";
+import { deleteSummonerThunk } from "../../redux/thunks/summonersThunks";
 import SummonerStyle from "./SummonerStyle";
 
 interface Props {
@@ -14,6 +16,7 @@ export interface ISummoner {
   secondRole: string;
   secondRoleChamps: string[];
   description: string;
+  id: string;
 }
 
 const Summoner = ({
@@ -27,9 +30,11 @@ const Summoner = ({
     secondRole,
     secondRoleChamps,
     description,
+    id,
   },
 }: Props) => {
   const championImageUrl = `https://ddragon.leagueoflegends.com/cdn/12.10.1/img/champion/`;
+  const dispatch = useAppDispatch();
 
   return (
     <SummonerStyle>
@@ -104,7 +109,11 @@ const Summoner = ({
         <p className="summoner__rank-text">{rank}</p>
       </div>
       <div className="summoner__actions-container">
-        <img src="icons/delete.svg" alt="" />
+        <img
+          src="icons/delete.svg"
+          alt=""
+          onClick={() => dispatch(deleteSummonerThunk(id))}
+        />
       </div>
       <p className="summoner__description">{description}</p>
     </SummonerStyle>
