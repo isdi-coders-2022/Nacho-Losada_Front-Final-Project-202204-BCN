@@ -6,6 +6,8 @@ const SummonerStyle = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-bottom: 20px;
+  align-content: center;
 
   .summoner {
     &__name {
@@ -14,6 +16,7 @@ const SummonerStyle = styled.div`
 
     &__creator-name {
       font-size: 1.5rem;
+      margin: 15px 0;
     }
 
     &__rank-text {
@@ -34,6 +37,9 @@ const SummonerStyle = styled.div`
     }
   }
 
+  .summoner__role-container {
+    margin-bottom: 10px;
+  }
   .summoner__left-block {
     margin-left: 15px;
   }
