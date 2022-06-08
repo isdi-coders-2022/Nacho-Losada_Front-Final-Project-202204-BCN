@@ -58,7 +58,7 @@ const RegisterForm = (): JSX.Element => {
           value={formData.username}
           onChange={changeData}
           className="register-form__input"
-        ></input>
+        />
         <label htmlFor="password" />
         <p>Contraseña:</p>
         <input
@@ -68,7 +68,7 @@ const RegisterForm = (): JSX.Element => {
           value={formData.password}
           onChange={changeData}
           className="register-form__input"
-        ></input>
+        />
         <label htmlFor="name" />
         <p>Nombre:</p>
         <input
@@ -77,7 +77,7 @@ const RegisterForm = (): JSX.Element => {
           value={formData.name}
           onChange={changeData}
           className="register-form__input"
-        ></input>
+        />
         <label htmlFor="email" />
         <p>Correo electrónico:</p>
         <input
@@ -86,7 +86,7 @@ const RegisterForm = (): JSX.Element => {
           value={formData.email}
           onChange={changeData}
           className="register-form__input"
-        ></input>
+        />
         <button disabled={buttonDisable} type="submit">
           Crear cuenta
         </button>
