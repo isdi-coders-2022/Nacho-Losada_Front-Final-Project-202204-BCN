@@ -72,7 +72,7 @@ const LoginForm = (): JSX.Element => {
           value={formData.username}
           onChange={changeData}
           className="login-form__input"
-        ></input>
+        />
         <label htmlFor="password" />
         <p>Contraseña:</p>
         <input
@@ -82,7 +82,7 @@ const LoginForm = (): JSX.Element => {
           value={formData.password}
           onChange={changeData}
           className="login-form__input"
-        ></input>
+        />
         <button disabled={buttonDisable} type="submit">
           Login
         </button>
