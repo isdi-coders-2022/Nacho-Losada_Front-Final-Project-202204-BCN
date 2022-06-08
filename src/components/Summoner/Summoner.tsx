@@ -112,7 +112,7 @@ const Summoner = ({
         <img
           src="icons/delete.svg"
           alt=""
-          onClick={() => dispatch(deleteSummonerThunk(id))}
+          onClick={() => dispatch(deleteSummonerThunk(id, summonerName))}
         />
       </div>
       <p className="summoner__description">{description}</p>
