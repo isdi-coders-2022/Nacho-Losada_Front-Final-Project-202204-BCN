@@ -18,12 +18,12 @@ function App(): JSX.Element {
       {isLoading && <LoadingModal />}
       <ToastContainer
         position="top-center"
-        autoClose={3000}
+        autoClose={4000}
         newestOnTop={true}
         closeOnClick
         rtl={false}
         pauseOnFocusLoss
-        draggable
+        draggable={true}
         pauseOnHover
       />
       <Header />
