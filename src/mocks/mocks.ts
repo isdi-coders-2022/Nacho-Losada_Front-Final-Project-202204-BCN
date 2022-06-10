@@ -1,8 +1,8 @@
 export const mockSummoner = {
   summonerName: "Abraham The Door",
   creatorName: "Abra",
-  rankImage: "images/rank-emblems/Gold.webp",
-  rank: "Gold IV",
+  rank: "Gold",
+  division: "IV",
   firstRole: "/images/positions/Bot.png",
   firstRoleChamps: ["Zac", "Annie", "Graves"],
   secondRole: "/images/positions/Top.png",
@@ -15,8 +15,8 @@ export const mockSummoners = [
   {
     summonerName: "Queso de pegatina",
     creatorName: "Genis",
-    rankImage: "images/rank-emblems/Iron.webp",
-    rank: "Iron IV",
+    rank: "Iron",
+    division: "IV",
     firstRole: "/images/positions/Top.png",
     firstRoleChamps: ["Garen", "Warwick", "Poppy"],
     secondRole: "/images/positions/Support.png",
@@ -26,8 +26,8 @@ export const mockSummoners = [
   {
     summonerName: "Lui Dude",
     creatorName: "Luisito",
-    rankImage: "images/rank-emblems/Diamond.webp",
-    rank: "Diamond III",
+    rank: "Diamond",
+    division: "III",
     firstRole: "/images/positions/Mid.png",
     firstRoleChamps: ["Lucian", "Lux", "Lissandra"],
     secondRole: "/images/positions/Support.png",

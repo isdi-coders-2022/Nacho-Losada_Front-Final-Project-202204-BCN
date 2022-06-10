@@ -1,5 +1,6 @@
 import axios from "axios";
 import { toast } from "react-toastify";
+import { IFormData } from "../../components/CreateSummoner/CreateSummonerForm";
 import CustomToast from "../../components/CustomToast/CustomToast";
 import {
   deleteSummonerActionCreator,
@@ -68,4 +69,18 @@ export const deleteSummonerThunk =
       });
       dispatch(loadOffActionCreator());
     }
+  };
+
+export const createSummonerThunk =
+  (formData: IFormData) => async (dispatch: AppDispatch) => {
+    dispatch(loadOnActionCreator());
+    const token = localStorage.getItem("token");
+
+    await axios.post(`${process.env.REACT_APP_API_URL}summoners/`, formData, {
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    });
+
+    dispatch(loadOffActionCreator());
   };

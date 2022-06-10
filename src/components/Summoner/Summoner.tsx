@@ -9,8 +9,8 @@ interface Props {
 export interface ISummoner {
   summonerName: string;
   creatorName: string;
-  rankImage: string;
   rank: string;
+  division: string;
   firstRole: string;
   firstRoleChamps: string[];
   secondRole: string;
@@ -23,8 +23,8 @@ const Summoner = ({
   summoner: {
     summonerName,
     creatorName,
-    rankImage,
     rank,
+    division,
     firstRole,
     firstRoleChamps,
     secondRole,
@@ -33,7 +33,7 @@ const Summoner = ({
     id,
   },
 }: Props) => {
-  const championImageUrl = `https://ddragon.leagueoflegends.com/cdn/12.10.1/img/champion/`;
+  const championImageUrl = `images/champions/`;
   const dispatch = useAppDispatch();
 
   return (
@@ -44,28 +44,28 @@ const Summoner = ({
         <div className="summoner__role-container">
           <div className="summoner__first-role">
             <img
-              src={firstRole}
+              src={`images/positions/${firstRole}.webp`}
               alt={firstRole}
               className="summoner__ico"
               width="40"
               height="40"
             />
             <img
-              src={`${championImageUrl}${firstRoleChamps[0]}.png`}
+              src={`${championImageUrl}${firstRoleChamps[0]}.webp`}
               alt={`${firstRoleChamps[0]} icon`}
               className="summoner__ico"
               width="40"
               height="40"
             />
             <img
-              src={`${championImageUrl}${firstRoleChamps[1]}.png`}
+              src={`${championImageUrl}${firstRoleChamps[1]}.webp`}
               alt={`${firstRoleChamps[1]} icon`}
               className="summoner__ico"
               width="40"
               height="40"
             />
             <img
-              src={`${championImageUrl}${firstRoleChamps[2]}.png`}
+              src={`${championImageUrl}${firstRoleChamps[2]}.webp`}
               alt={`${firstRoleChamps[2]} icon`}
               className="summoner__ico"
               width="40"
@@ -73,23 +73,27 @@ const Summoner = ({
             />
           </div>
           <div className="summoner__second-role">
-            <img src={secondRole} alt={secondRole} className="summoner__ico" />
             <img
-              src={`${championImageUrl}${secondRoleChamps[0]}.png`}
+              src={`images/positions/${secondRole}.webp`}
+              alt={secondRole}
+              className="summoner__ico"
+            />
+            <img
+              src={`${championImageUrl}${secondRoleChamps[0]}.webp`}
               alt={`${firstRoleChamps[0]} icon`}
               className="summoner__ico"
               width="40"
               height="40"
             />
             <img
-              src={`${championImageUrl}${secondRoleChamps[1]}.png`}
+              src={`${championImageUrl}${secondRoleChamps[1]}.webp`}
               alt={`${firstRoleChamps[1]} icon`}
               className="summoner__ico"
               width="40"
               height="40"
             />
             <img
-              src={`${championImageUrl}${secondRoleChamps[2]}.png`}
+              src={`${championImageUrl}${secondRoleChamps[2]}.webp`}
               alt={`${firstRoleChamps[2]} icon`}
               className="summoner__ico"
               width="40"
@@ -100,13 +104,15 @@ const Summoner = ({
       </div>
       <div className="summoner__rank-container summoner__right-block">
         <img
-          src={rankImage}
+          src={`images/rank-emblems/${rank}.webp`}
           alt={rank}
           className="summoner__rank-emblem"
           width="150"
           height="171.38"
         />
-        <p className="summoner__rank-text">{rank}</p>
+        <p className="summoner__rank-text">
+          {rank} {division}
+        </p>
       </div>
       <div className="summoner__actions-container">
         <img
