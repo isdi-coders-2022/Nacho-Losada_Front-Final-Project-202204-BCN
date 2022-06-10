@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import CreateSummonerForm from "../../components/CreateSummoner/CreateSummoner";
+import CreateSummonerForm from "../../components/CreateSummoner/CreateSummonerForm";
 
 const CreateSummonerPageStyle = styled.div``;
 
