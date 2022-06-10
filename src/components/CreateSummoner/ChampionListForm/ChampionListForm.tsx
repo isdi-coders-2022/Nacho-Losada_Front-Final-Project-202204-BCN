@@ -45,7 +45,6 @@ const ChampionListForm = ({ func }: any): JSX.Element => {
               type="checkbox"
               id={champion}
               value={champion}
-              // onChange={func}
               onClick={() => func(champion)}
             />
             <label htmlFor={champion}>

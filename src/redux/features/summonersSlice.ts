@@ -10,11 +10,16 @@ const summonersSlice = createSlice({
     loadList: (summoners, action: PayloadAction<ISummoner[]>) => action.payload,
     deleteSummoner: (summoners, action: PayloadAction<ISummoner["id"]>) =>
       summoners.filter((summoner) => summoner.id !== action.payload),
+    createSummoner: (summoners, action: PayloadAction<ISummoner>) => [
+      ...summoners,
+      action.payload,
+    ],
   },
 });
 
 export const {
   loadList: loadListActionCreator,
   deleteSummoner: deleteSummonerActionCreator,
+  createSummoner: createSummonerActionCreator,
 } = summonersSlice.actions;
 export default summonersSlice.reducer;
