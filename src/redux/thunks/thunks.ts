@@ -2,24 +2,11 @@ import axios from "axios";
 import jwtDecode from "jwt-decode";
 import { toast } from "react-toastify";
 import CustomToast from "../../components/CustomToast/CustomToast";
+import { LoginFormData, RegisterFormData } from "../../types/interfaces";
+import { errorIcon, successIcon } from "../../utils/icons";
 import { loadOffActionCreator, loadOnActionCreator } from "../features/uiSlice";
 import { loginActionCreator } from "../features/userSlice";
 import { AppDispatch } from "../store/store";
-
-interface RegisterFormData {
-  username: string;
-  password: string;
-  name: string;
-  email: string;
-}
-
-interface LoginFormData {
-  username: string;
-  password: string;
-}
-
-const successIcon = "/icons/success-ico.webp";
-const errorIcon = "/icons/error-ico.webp";
 
 const errorLoginText = ': "-Algo ha salido mal. Inténtalo de nuevo."';
 
