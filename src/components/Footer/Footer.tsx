@@ -12,7 +12,9 @@ const Footer = (): JSX.Element => {
             </NavLink>
           </li>
           <li>
-            <img src="icons/add.svg" alt="" className="footer__icon" />
+            <NavLink to="/new-summoner">
+              <img src="icons/add.svg" alt="" className="footer__icon" />
+            </NavLink>
           </li>
           <li>
             <img src="icons/heart-full.svg" alt="" className="footer__icon" />
