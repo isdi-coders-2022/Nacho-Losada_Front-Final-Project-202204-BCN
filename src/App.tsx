@@ -14,6 +14,7 @@ import LoggedGatekeeper from "./components/LoggedGatekeeper/LoggedGatekeeper";
 import jwtDecode from "jwt-decode";
 import { loginActionCreator } from "./redux/features/userSlice";
 import { UserResponseApi } from "./types/interfaces";
+import NotLoggedGatekeeper from "./components/NotLoggedGatekeeper/NotLoggedGatekeeper";
 
 function App(): JSX.Element {
   const isLoading: boolean = useAppSelector((state) => state.ui.loading);
@@ -46,8 +47,22 @@ function App(): JSX.Element {
       <Routes>
         <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/summoners" element={<SummonersPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
+        <Route
+          path="/login"
+          element={
+            <NotLoggedGatekeeper>
+              <LoginPage />
+            </NotLoggedGatekeeper>
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <NotLoggedGatekeeper>
+              <RegisterPage />
+            </NotLoggedGatekeeper>
+          }
+        />
         <Route
           path="/new-summoner"
           element={
