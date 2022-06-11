@@ -9,6 +9,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useAppSelector } from "./redux/hooks/hooks";
 import SummonersPage from "./pages/SummonersPage/SummonersPage";
+import CreateSummonerPage from "./pages/CreateSummonerPage/CreateSummonerPage";
 
 function App(): JSX.Element {
   const isLoading: boolean = useAppSelector((state) => state.ui.loading);
@@ -32,6 +33,7 @@ function App(): JSX.Element {
         <Route path="/summoners" element={<SummonersPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="/new-summoner" element={<CreateSummonerPage />} />
       </Routes>
       <Footer />
     </>

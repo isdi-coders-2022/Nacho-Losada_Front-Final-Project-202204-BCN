@@ -99,7 +99,8 @@ const CreateSummonerForm = (): JSX.Element => {
       formData.firstRole !== "" &&
       formData.firstRoleChamps !== [] &&
       formData.secondRole !== "" &&
-      formData.secondRoleChamps !== []
+      formData.secondRoleChamps !== [] &&
+      formData.description !== ""
     ) {
       setButtonDisable(false);
     } else {
@@ -234,7 +235,7 @@ const CreateSummonerForm = (): JSX.Element => {
           <option hidden value={"Rol 1"}>
             Rol 1
           </option>
-          <option value="Top">Top</option>
+          <option value="Top">Top </option>
           <option value="Jungle">Jungla</option>
           <option value="Mid">Mid</option>
           <option value="Support">Support</option>
@@ -280,14 +281,14 @@ const CreateSummonerForm = (): JSX.Element => {
         <ChampionListFormStyle>
           <ul>
             {champions.map((champion) => (
-              <li key={champion}>
+              <li key={`${champion}_2`}>
                 <input
                   className="checkbox"
                   type="checkbox"
                   id={champion}
-                  value={champion}
+                  value={`${champion}`}
                 />
-                <label htmlFor={champion}>
+                <label htmlFor={`${champion}`}>
                   <img
                     src={`/images/champions/${champion}.webp`}
                     alt={champion}
@@ -300,7 +301,6 @@ const CreateSummonerForm = (): JSX.Element => {
           </ul>
         </ChampionListFormStyle>
         <label htmlFor="description">Descripción:</label>
-
         <textarea
           id="description"
           name="description"
@@ -311,7 +311,6 @@ const CreateSummonerForm = (): JSX.Element => {
           placeholder="Escribe un poquito sobre tu cuenta"
           maxLength={150}
         ></textarea>
-
         <button disabled={buttonDisable} type="submit">
           Crear Invocador
         </button>
