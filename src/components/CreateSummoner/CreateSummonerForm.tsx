@@ -69,7 +69,7 @@ export interface IFormData {
 }
 
 const CreateSummonerForm = (): JSX.Element => {
-  const nameOfUser: string = useAppSelector((state) => state.users.name);
+  const nameOfUser: string = useAppSelector((state) => state.user.name);
   const dispatch = useAppDispatch();
 
   let champsInitial: string[] = [];

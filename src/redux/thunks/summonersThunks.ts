@@ -2,15 +2,13 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { IFormData } from "../../components/CreateSummoner/CreateSummonerForm";
 import CustomToast from "../../components/CustomToast/CustomToast";
+import { errorIcon, warningIcon } from "../../utils/icons";
 import {
   deleteSummonerActionCreator,
   loadListActionCreator,
 } from "../features/summonersSlice";
 import { loadOffActionCreator, loadOnActionCreator } from "../features/uiSlice";
 import { AppDispatch } from "../store/store";
-
-const warningIcon = "/icons/warning-ico.webp";
-const errorIcon = "/icons/error-ico.webp";
 
 export const loadSummonersThunk = () => async (dispatch: AppDispatch) => {
   try {
