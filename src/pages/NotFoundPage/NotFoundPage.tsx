@@ -1,11 +1,9 @@
 import styled from "styled-components";
 
 const NotFoundPagePageStyled = styled.div`
-  /* width: 100vw; */
   height: 60vh;
   display: flex;
   justify-content: center;
-  align-items: center;
   align-items: center;
   text-align: center;
 
@@ -14,7 +12,6 @@ const NotFoundPagePageStyled = styled.div`
   }
 
   p {
-    /* width: fit-content; */
     max-width: 300px;
     background: linear-gradient(90deg, #e6a94d 50%, #dfd1b2 100%);
     -webkit-background-clip: text;
