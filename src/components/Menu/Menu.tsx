@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { toast } from "react-toastify";
 import { logoutActionCreator } from "../../redux/features/userSlice";
 import { useAppSelector } from "../../redux/hooks/hooks";
@@ -8,9 +8,8 @@ import CustomToast from "../CustomToast/CustomToast";
 import MenuStyled from "./MenuStyled";
 
 const Menu = (): JSX.Element => {
-  const { name, logged } = useAppSelector((state) => state.user);
+  const { name } = useAppSelector((state) => state.user);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const successLogoutText = `"-Hasta pronto ${name}!!"`;
 
@@ -26,7 +25,6 @@ const Menu = (): JSX.Element => {
     });
 
     dispatch(logoutActionCreator());
-    navigate("/login");
   };
 
   return (
@@ -38,7 +36,7 @@ const Menu = (): JSX.Element => {
       <div className="menu">
         <div>
           <ul className="menu__list">
-            {logged && (
+            {name && (
               <li>
                 <p className="menu__greeting">Hola {name}!</p>
               </li>
@@ -46,7 +44,7 @@ const Menu = (): JSX.Element => {
             <li>
               <div className="menu__separator"></div>
             </li>
-            {!logged ? (
+            {!name ? (
               <li>
                 <NavLink to="/login">
                   <p className="menu__link">Login</p>

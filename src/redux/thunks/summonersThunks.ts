@@ -33,11 +33,14 @@ export const deleteSummonerThunk =
     if (token) {
       try {
         dispatch(loadOnActionCreator());
-        await axios.delete(`http://localhost:4000/summoners/${idToDelete}`, {
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
-        });
+        await axios.delete(
+          `${process.env.REACT_APP_API_URL}summoners/${idToDelete}`,
+          {
+            headers: {
+              authorization: `Bearer ${token}`,
+            },
+          }
+        );
 
         toast.success(CustomToast(warningIcon, succesLoginText), {
           position: "bottom-center",
