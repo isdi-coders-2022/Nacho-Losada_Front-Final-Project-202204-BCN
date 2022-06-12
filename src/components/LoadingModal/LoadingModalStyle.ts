@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const LoadingModalStyle = styled.div`
   background: rgba(255, 255, 255, 0.3);
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 100%;
   transition: opacity 2s linear;
