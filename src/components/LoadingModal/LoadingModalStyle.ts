@@ -34,7 +34,6 @@ const LoadingModalStyle = styled.div`
 
   .hide {
     visibility: hidden;
-    margin-bottom: 50000px;
   }
 
   @keyframes pulse-white {

@@ -4,11 +4,9 @@ const MenuStyled = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  width: 200px;
 
   .menu {
     background: #0e292c;
-    width: 200px;
     height: 0;
     transition: all 0.4s ease;
   }
@@ -104,9 +102,10 @@ const MenuStyled = styled.div`
     p {
       background: linear-gradient(90deg, #e6a94d 50%, #dfd1b2 100%);
       -webkit-background-clip: text;
+      background-clip: text;
       -webkit-text-fill-color: transparent;
 
-      font-size: 2.5rem;
+      font-size: 2rem;
       margin: 0;
     }
     a {
