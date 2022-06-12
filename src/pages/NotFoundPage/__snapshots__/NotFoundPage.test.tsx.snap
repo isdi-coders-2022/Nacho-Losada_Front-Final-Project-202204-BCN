@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Given a NotFoundPage When it's rendered Then it should match this snapshot 1`] = `
+<div
+  className="sc-bczRLJ gQRBs"
+>
+  <div
+    className="container"
+  >
+    <img
+      alt="poro chafado pensando en porogalletas"
+      src="images/poros/notfound-poro.webp"
+    />
+    <p>
+      Ooops!! Parece que la página que buscas no existe :(
+    </p>
+  </div>
+</div>
+`;

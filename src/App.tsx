@@ -15,6 +15,7 @@ import jwtDecode from "jwt-decode";
 import { loginActionCreator } from "./redux/features/userSlice";
 import { UserResponseApi } from "./types/interfaces";
 import NotLoggedGatekeeper from "./components/NotLoggedGatekeeper/NotLoggedGatekeeper";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 
 function App(): JSX.Element {
   const isLoading: boolean = useAppSelector((state) => state.ui.loading);
@@ -71,6 +72,7 @@ function App(): JSX.Element {
             </LoggedGatekeeper>
           }
         />
+        <Route path="/*" element={<NotFoundPage />} />
       </Routes>
       <Footer />
     </>
