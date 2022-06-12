@@ -2,7 +2,7 @@
 
 exports[`Given a NotFoundPage When it's rendered Then it should match this snapshot 1`] = `
 <div
-  className="sc-bczRLJ gQRBs"
+  className="sc-bczRLJ kqqIkV"
 >
   <div
     className="container"
