@@ -55,7 +55,9 @@
   },
   "devDependencies": {
     "@babel/plugin-syntax-jsx": "^7.17.12",
-    "husky": "^7.0.0"
+    "@types/react-test-renderer": "^18.0.0",
+    "husky": "^7.0.0",
+    "react-test-renderer": "^18.1.0"
   },
   "babel": {
     "presets": [
