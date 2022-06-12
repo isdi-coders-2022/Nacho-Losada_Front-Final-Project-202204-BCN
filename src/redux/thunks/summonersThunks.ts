@@ -49,7 +49,7 @@ export const deleteSummonerThunk =
         dispatch(loadOffActionCreator());
       } catch (error) {
         const errorLoginText =
-          ': "-No se ha podido borrar al invocador. Inténtalo de nuevo."';
+          '"-No se ha podido borrar al invocador. Inténtalo de nuevo."';
 
         toast.error(CustomToast(errorIcon, errorLoginText), {
           position: "bottom-center",

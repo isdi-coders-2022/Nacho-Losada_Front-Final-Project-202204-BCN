@@ -1,5 +1,7 @@
 import { render, screen } from "@testing-library/react";
+import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
+import { store } from "../../redux/store/store";
 import Menu from "./Menu";
 
 describe("Given a Menu", () => {
@@ -7,7 +9,9 @@ describe("Given a Menu", () => {
     test("Then it should show 'Login' and 'Register'", () => {
       render(
         <BrowserRouter>
-          <Menu />
+          <Provider store={store}>
+            <Menu />
+          </Provider>
         </BrowserRouter>
       );
 

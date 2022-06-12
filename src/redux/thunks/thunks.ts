@@ -8,11 +8,11 @@ import { loadOffActionCreator, loadOnActionCreator } from "../features/uiSlice";
 import { loginActionCreator } from "../features/userSlice";
 import { AppDispatch } from "../store/store";
 
-const errorLoginText = ': "-Algo ha salido mal. Inténtalo de nuevo."';
+const errorLoginText = '"-Algo ha salido mal. Inténtalo de nuevo."';
 
 export const registerUserThunk =
   (formData: RegisterFormData) => async (dispatch: AppDispatch) => {
-    const succesLoginText = ': "-Te has registrado correctamente."';
+    const succesLoginText = '"-Te has registrado correctamente."';
 
     try {
       dispatch(loadOnActionCreator());
@@ -52,7 +52,7 @@ export const registerUserThunk =
 
 export const loginUserThunk =
   (formData: LoginFormData) => async (dispatch: AppDispatch) => {
-    const succesLoginText = ': "-Te has logueado correctamente."';
+    const succesLoginText = '"-Te has logueado correctamente."';
 
     try {
       dispatch(loadOnActionCreator());
