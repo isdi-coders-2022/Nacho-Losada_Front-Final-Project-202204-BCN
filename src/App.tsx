@@ -16,6 +16,7 @@ import { loginActionCreator } from "./redux/features/userSlice";
 import { UserResponseApi } from "./types/interfaces";
 import NotLoggedGatekeeper from "./components/NotLoggedGatekeeper/NotLoggedGatekeeper";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
+import EditSummonerPage from "./pages/EditSummonerPage/EditSummonerPage";
 
 function App(): JSX.Element {
   const isLoading: boolean = useAppSelector((state) => state.ui.loading);
@@ -69,6 +70,14 @@ function App(): JSX.Element {
           element={
             <LoggedGatekeeper>
               <CreateSummonerPage />
+            </LoggedGatekeeper>
+          }
+        />
+        <Route
+          path="/summoners/edit/:id"
+          element={
+            <LoggedGatekeeper>
+              <EditSummonerPage />
             </LoggedGatekeeper>
           }
         />
