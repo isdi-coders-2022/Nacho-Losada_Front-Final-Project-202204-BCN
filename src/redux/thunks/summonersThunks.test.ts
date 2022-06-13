@@ -4,6 +4,7 @@ import { mockCreateFormData } from "../../mocks/mocks";
 import {
   createSummonerThunk,
   deleteSummonerThunk,
+  editSummonerThunk,
   loadSummonersThunk,
 } from "./summonersThunks";
 
@@ -123,6 +124,49 @@ describe("Given a createSummonerThunk function", () => {
       jest.spyOn(Storage.prototype, "getItem").mockReturnValue(null);
 
       const thunk = createSummonerThunk(mockCreateFormData);
+      await thunk(mockDispatch);
+
+      expect(toast.warning).toHaveBeenCalled();
+    });
+  });
+});
+
+describe("Given a editSummonerThunk function", () => {
+  describe("When a logged user invokes it with an existant id and a new form", () => {
+    test("Then it should call the toast succes method", async () => {
+      const idToDelete = "edit me";
+
+      axios.post = jest.fn();
+      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
+
+      const thunk = editSummonerThunk(idToDelete, mockCreateFormData);
+      await thunk(mockDispatch);
+
+      expect(toast.success).toHaveBeenCalled();
+    });
+  });
+
+  describe("When a logged user invokes it with an invalid id and a new form", () => {
+    test("Then it should call the toast error method", async () => {
+      const idToDelete = "edit me";
+
+      axios.post = jest.fn().mockRejectedValue(new Error());
+      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
+
+      const thunk = editSummonerThunk(idToDelete, mockCreateFormData);
+      await thunk(mockDispatch);
+
+      expect(toast.error).toHaveBeenCalled();
+    });
+  });
+
+  describe("When a not logged user invokes it", () => {
+    test("Then it should call the toast warning method", async () => {
+      const idToDelete = "edit me";
+
+      jest.spyOn(Storage.prototype, "getItem").mockReturnValue(null);
+
+      const thunk = editSummonerThunk(idToDelete, mockCreateFormData);
       await thunk(mockDispatch);
 
       expect(toast.warning).toHaveBeenCalled();
