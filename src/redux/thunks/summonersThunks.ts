@@ -2,7 +2,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { IFormData } from "../../components/CreateSummoner/CreateSummonerForm";
 import CustomToast from "../../components/CustomToast/CustomToast";
-import { errorIcon, warningIcon } from "../../utils/icons";
+import { errorIcon, warningIcon, successIcon } from "../../utils/icons";
 import {
   deleteSummonerActionCreator,
   loadListActionCreator,
@@ -78,6 +78,7 @@ export const createSummonerThunk =
   (formData: IFormData) => async (dispatch: AppDispatch) => {
     dispatch(loadOnActionCreator());
     const token = localStorage.getItem("token");
+    const succesLoginText = `"-Has creado a ${formData.summonerName}"`;
 
     if (token) {
       try {
@@ -90,6 +91,11 @@ export const createSummonerThunk =
             },
           }
         );
+        toast.success(CustomToast(successIcon, succesLoginText), {
+          position: "bottom-center",
+          hideProgressBar: true,
+          progress: undefined,
+        });
 
         dispatch(loadOffActionCreator());
       } catch (error) {
