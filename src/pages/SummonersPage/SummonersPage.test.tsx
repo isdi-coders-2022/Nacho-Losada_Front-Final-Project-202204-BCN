@@ -1,6 +1,7 @@
 import { configureStore, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 import { ISummoner } from "../../components/Summoner/Summoner";
 import { mockSummoners } from "../../mocks/mocks";
 import { store } from "../../redux/store/store";
@@ -35,9 +36,11 @@ describe("Given a SummonersPage component", () => {
         });
 
         render(
-          <Provider store={mockStore}>
-            <SummonersPage />
-          </Provider>
+          <BrowserRouter>
+            <Provider store={mockStore}>
+              <SummonersPage />
+            </Provider>
+          </BrowserRouter>
         );
         const listItems = screen.getAllByRole("listitem");
 

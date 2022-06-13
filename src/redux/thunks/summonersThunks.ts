@@ -121,3 +121,52 @@ export const createSummonerThunk =
       dispatch(loadOffActionCreator());
     }
   };
+
+export const editSummonerThunk =
+  (editingSummonerId: string, formData: IFormData) =>
+  async (dispatch: AppDispatch) => {
+    dispatch(loadOnActionCreator());
+    const token = localStorage.getItem("token");
+    const succesLoginText = `"-Has editado a ${formData.summonerName} correctamente"`;
+
+    if (token) {
+      try {
+        await axios.post(
+          `${process.env.REACT_APP_API_URL}summoners/edit/${editingSummonerId}`,
+          formData,
+          {
+            headers: {
+              authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        toast.success(CustomToast(successIcon, succesLoginText), {
+          position: "bottom-center",
+          hideProgressBar: true,
+          progress: undefined,
+        });
+
+        dispatch(loadOffActionCreator());
+      } catch (error) {
+        const errorLoginText =
+          '"-No se ha podido crear al invocador. Inténtalo de nuevo."';
+
+        toast.error(CustomToast(errorIcon, errorLoginText), {
+          position: "bottom-center",
+          hideProgressBar: true,
+          progress: undefined,
+        });
+        dispatch(loadOffActionCreator());
+      }
+    } else {
+      const warningText =
+        '"-Tienes que estar loggeado para crear un invocador"';
+
+      toast.warning(CustomToast(warningIcon, warningText), {
+        position: "bottom-center",
+        hideProgressBar: true,
+        progress: undefined,
+      });
+      dispatch(loadOffActionCreator());
+    }
+  };
