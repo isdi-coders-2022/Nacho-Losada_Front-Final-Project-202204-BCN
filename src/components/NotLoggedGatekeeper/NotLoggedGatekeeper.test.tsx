@@ -32,4 +32,27 @@ describe("Given a NotLoggedGatekeeper component", () => {
       expect(mockUseNavigate).toHaveBeenCalledWith("/summoners");
     });
   });
+
+  describe("When invoked and the user is not logged", () => {
+    test("Then it should navigate to '/summoners'", () => {
+      const testComponent = <p>Hello boss</p>;
+
+      const userMockSlice = createSlice({
+        name: "user",
+        initialState: { name: "" },
+        reducers: {},
+      });
+      const mockStore = configureStore({
+        reducer: { user: userMockSlice.reducer },
+      });
+
+      render(
+        <Provider store={mockStore}>
+          <NotLoggedGatekeeper>{testComponent}</NotLoggedGatekeeper>
+        </Provider>
+      );
+
+      expect(mockUseNavigate).not.toHaveBeenCalled();
+    });
+  });
 });
