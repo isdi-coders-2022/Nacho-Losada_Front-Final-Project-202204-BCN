@@ -79,11 +79,39 @@ export const createSummonerThunk =
     dispatch(loadOnActionCreator());
     const token = localStorage.getItem("token");
 
-    await axios.post(`${process.env.REACT_APP_API_URL}summoners/`, formData, {
-      headers: {
-        authorization: `Bearer ${token}`,
-      },
-    });
+    if (token) {
+      try {
+        await axios.post(
+          `${process.env.REACT_APP_API_URL}summoners/`,
+          formData,
+          {
+            headers: {
+              authorization: `Bearer ${token}`,
+            },
+          }
+        );
 
-    dispatch(loadOffActionCreator());
+        dispatch(loadOffActionCreator());
+      } catch (error) {
+        const errorLoginText =
+          '"-No se ha podido crear al invocador. Inténtalo de nuevo."';
+
+        toast.error(CustomToast(errorIcon, errorLoginText), {
+          position: "bottom-center",
+          hideProgressBar: true,
+          progress: undefined,
+        });
+        dispatch(loadOffActionCreator());
+      }
+    } else {
+      const warningText =
+        '"-Tienes que estar loggeado para crear un invocador"';
+
+      toast.warning(CustomToast(warningIcon, warningText), {
+        position: "bottom-center",
+        hideProgressBar: true,
+        progress: undefined,
+      });
+      dispatch(loadOffActionCreator());
+    }
   };
