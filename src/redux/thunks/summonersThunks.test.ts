@@ -1,6 +1,11 @@
 import axios from "axios";
 import { toast } from "react-toastify";
-import { deleteSummonerThunk, loadSummonersThunk } from "./summonersThunks";
+import { mockCreateFormData } from "../../mocks/mocks";
+import {
+  createSummonerThunk,
+  deleteSummonerThunk,
+  loadSummonersThunk,
+} from "./summonersThunks";
 
 const mockDispatch = jest.fn();
 
@@ -8,6 +13,10 @@ jest.mock("react-redux", () => ({
   ...jest.requireActual("react-redux"),
   useDispatch: () => mockDispatch,
 }));
+
+toast.success = jest.fn();
+toast.error = jest.fn();
+toast.warning = jest.fn();
 
 describe("Given a loadSummonersThunk function", () => {
   describe("When invoked", () => {
@@ -45,7 +54,6 @@ describe("Given a deleteSummonerThunk function", () => {
       const summonerName = "Marco Antonio";
 
       axios.delete = jest.fn();
-      toast.success = jest.fn();
       jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
 
       const thunk = deleteSummonerThunk(idToDelete, summonerName);
@@ -61,7 +69,6 @@ describe("Given a deleteSummonerThunk function", () => {
       const summonerName = "Mario the Boss";
 
       axios.delete = jest.fn().mockRejectedValue("");
-      toast.error = jest.fn();
       jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
 
       const thunk = deleteSummonerThunk(idToDelete, summonerName);
@@ -76,10 +83,46 @@ describe("Given a deleteSummonerThunk function", () => {
       const idToDelete = "cant touch this";
       const summonerName = "Mario the Boss";
 
-      toast.warning = jest.fn();
       jest.spyOn(Storage.prototype, "getItem").mockReturnValue(null);
 
       const thunk = deleteSummonerThunk(idToDelete, summonerName);
+      await thunk(mockDispatch);
+
+      expect(toast.warning).toHaveBeenCalled();
+    });
+  });
+});
+
+describe("Given a createSummonerThunk function", () => {
+  describe("When a logged user invokes it with the form values", () => {
+    test("Then it should call the axios post method", async () => {
+      axios.post = jest.fn();
+      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
+
+      const thunk = createSummonerThunk(mockCreateFormData);
+      await thunk(mockDispatch);
+
+      expect(axios.post).toHaveBeenCalled();
+    });
+  });
+
+  describe("When a logged user invokes it with invalid values", () => {
+    test("Then it should call the toast error method", async () => {
+      axios.post = jest.fn().mockRejectedValue(new Error());
+      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
+
+      const thunk = createSummonerThunk(mockCreateFormData);
+      await thunk(mockDispatch);
+
+      expect(toast.error).toHaveBeenCalled();
+    });
+  });
+
+  describe("When a not logged user invokes it", () => {
+    test("Then it should call the toast warning error", async () => {
+      jest.spyOn(Storage.prototype, "getItem").mockReturnValue(null);
+
+      const thunk = createSummonerThunk(mockCreateFormData);
       await thunk(mockDispatch);
 
       expect(toast.warning).toHaveBeenCalled();
