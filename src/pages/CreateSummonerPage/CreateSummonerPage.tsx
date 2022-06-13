@@ -6,7 +6,7 @@ const CreateSummonerPageStyle = styled.div``;
 const CreateSummonerPage = (): JSX.Element => {
   return (
     <CreateSummonerPageStyle>
-      <CreateSummonerForm />
+      <CreateSummonerForm handledSummoner={null} />
     </CreateSummonerPageStyle>
   );
 };
