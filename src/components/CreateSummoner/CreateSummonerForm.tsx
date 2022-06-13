@@ -1,8 +1,12 @@
 import { ChangeEventHandler, useEffect, useState } from "react";
 import styled from "styled-components";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
-import { createSummonerThunk } from "../../redux/thunks/summonersThunks";
+import {
+  createSummonerThunk,
+  editSummonerThunk,
+} from "../../redux/thunks/summonersThunks";
 import champions from "../../utils/champions";
+import { ISummoner } from "../Summoner/Summoner";
 
 const CreateSummonerStyle = styled.div`
   margin-bottom: 180px;
@@ -68,7 +72,11 @@ export interface IFormData {
   description: string;
 }
 
-const CreateSummonerForm = (): JSX.Element => {
+export interface SummonerProp {
+  handledSummoner: ISummoner | null | undefined;
+}
+
+const CreateSummonerForm = ({ handledSummoner }: SummonerProp): JSX.Element => {
   const nameOfUser: string = useAppSelector((state) => state.user.name);
   const dispatch = useAppDispatch();
 
@@ -77,15 +85,15 @@ const CreateSummonerForm = (): JSX.Element => {
   const [secondRoleChampions, setSecondRoleChampions] = useState(champsInitial);
 
   const blankData: IFormData = {
-    summonerName: "",
-    creatorName: "",
-    rank: "",
-    division: "",
-    firstRole: "",
-    firstRoleChamps: [],
-    secondRole: "",
-    secondRoleChamps: [],
-    description: "",
+    summonerName: handledSummoner ? handledSummoner.summonerName : "",
+    creatorName: handledSummoner ? handledSummoner.creatorName : "",
+    rank: handledSummoner ? handledSummoner.rank : "",
+    division: handledSummoner ? handledSummoner.division : "",
+    firstRole: handledSummoner ? handledSummoner.firstRole : "",
+    firstRoleChamps: handledSummoner ? handledSummoner.firstRoleChamps : [],
+    secondRole: handledSummoner ? handledSummoner.secondRole : "",
+    secondRoleChamps: handledSummoner ? handledSummoner.secondRoleChamps : [],
+    description: handledSummoner ? handledSummoner.description : "",
   };
   const [formData, setFormData] = useState(blankData);
   const [buttonDisable, setButtonDisable] = useState(true);
@@ -168,6 +176,11 @@ const CreateSummonerForm = (): JSX.Element => {
 
   const submitSummoner = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (handledSummoner) {
+      dispatch(editSummonerThunk(handledSummoner.id, formData));
+      return;
+    }
+
     dispatch(createSummonerThunk(formData));
     resetForm();
   };
@@ -195,7 +208,9 @@ const CreateSummonerForm = (): JSX.Element => {
           id="rank"
           onChange={changeSelectData}
           className="new-summoner-form__input"
-          defaultValue={"Rango del invocador"}
+          defaultValue={
+            handledSummoner ? handledSummoner.rank : "Rango del invocador"
+          }
         >
           <option hidden value={"Rango del invocador"}>
             Rango del invocador
@@ -215,7 +230,7 @@ const CreateSummonerForm = (): JSX.Element => {
           id="division"
           onChange={changeSelectData}
           className="new-summoner-form__input"
-          defaultValue={"division"}
+          defaultValue={handledSummoner ? handledSummoner.division : "division"}
         >
           <option hidden value={"division"}>
             División
@@ -230,7 +245,7 @@ const CreateSummonerForm = (): JSX.Element => {
           id="firstRole"
           onChange={changeSelectData}
           className="new-summoner-form__input"
-          defaultValue={"Rol 1"}
+          defaultValue={handledSummoner ? handledSummoner.firstRole : "Rol 1"}
         >
           <option hidden value={"Rol 1"}>
             Rol 1
@@ -267,7 +282,7 @@ const CreateSummonerForm = (): JSX.Element => {
           id="secondRole"
           onChange={changeSelectData}
           className="new-summoner-form__input"
-          defaultValue={"Rol 2"}
+          defaultValue={handledSummoner ? handledSummoner.secondRole : "Rol 2"}
         >
           <option hidden value={"Rol 2"}>
             Rol 2
@@ -312,7 +327,7 @@ const CreateSummonerForm = (): JSX.Element => {
           maxLength={150}
         ></textarea>
         <button disabled={buttonDisable} type="submit">
-          Crear Invocador
+          {handledSummoner ? "Editar Invocador" : "Crear Invocador"}
         </button>
       </form>
     </CreateSummonerStyle>

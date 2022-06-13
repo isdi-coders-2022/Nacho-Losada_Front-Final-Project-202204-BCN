@@ -11,7 +11,7 @@ describe("Given a CreateSumonerForm component", () => {
 
       render(
         <Provider store={store}>
-          <CreateSummonerForm />
+          <CreateSummonerForm handledSummoner={null} />
         </Provider>
       );
       const shownSelectors = screen.getAllByRole("combobox");
@@ -26,7 +26,7 @@ describe("Given a CreateSumonerForm component", () => {
 
       render(
         <Provider store={store}>
-          <CreateSummonerForm />
+          <CreateSummonerForm handledSummoner={null} />
         </Provider>
       );
       const button = screen.getByRole("button");

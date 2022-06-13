@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../redux/hooks/hooks";
 import { deleteSummonerThunk } from "../../redux/thunks/summonersThunks";
 import SummonerStyle from "./SummonerStyle";
@@ -35,6 +36,7 @@ const Summoner = ({
 }: Props) => {
   const championImageUrl = `images/champions/`;
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   return (
     <SummonerStyle>
@@ -119,6 +121,11 @@ const Summoner = ({
           src="icons/delete.svg"
           alt=""
           onClick={() => dispatch(deleteSummonerThunk(id, summonerName))}
+        />
+        <img
+          src="icons/edit.svg"
+          alt=""
+          onClick={() => navigate(`/summoners/edit/${id}`)}
         />
       </div>
       <p className="summoner__description">{description}</p>

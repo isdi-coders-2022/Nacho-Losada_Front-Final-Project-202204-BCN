@@ -14,6 +14,12 @@ const summonersSlice = createSlice({
       ...summoners,
       action.payload,
     ],
+    editSummoner: (summoners, action: PayloadAction<ISummoner>) =>
+      summoners.map((summoner) =>
+        summoner.id === action.payload.id
+          ? { ...action.payload }
+          : { ...summoner }
+      ),
   },
 });
 
