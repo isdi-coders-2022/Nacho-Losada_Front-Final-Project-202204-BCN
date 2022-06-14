@@ -80,10 +80,6 @@ const CreateSummonerForm = ({ handledSummoner }: SummonerProp): JSX.Element => {
   const nameOfUser: string = useAppSelector((state) => state.user.name);
   const dispatch = useAppDispatch();
 
-  let champsInitial: string[] = [];
-  const [firstRoleChampions, setFirstRoleChampions] = useState(champsInitial);
-  const [secondRoleChampions, setSecondRoleChampions] = useState(champsInitial);
-
   const blankData: IFormData = {
     summonerName: handledSummoner ? handledSummoner.summonerName : "",
     creatorName: handledSummoner ? handledSummoner.creatorName : "",
@@ -135,18 +131,21 @@ const CreateSummonerForm = ({ handledSummoner }: SummonerProp): JSX.Element => {
   };
 
   const toggleFirstRoleChampion = (champion: string) => {
-    switch (firstRoleChampions.includes(champion)) {
+    switch (formData.firstRoleChamps.includes(champion)) {
       case true:
-        const newChamps = firstRoleChampions.filter(
-          (champ) => champ !== champion
-        );
-        setFirstRoleChampions(newChamps);
-        setFormData({ ...formData, firstRoleChamps: newChamps });
+        setFormData({
+          ...formData,
+          firstRoleChamps: formData.firstRoleChamps.filter(
+            (champ) => champ !== champion
+          ),
+        });
         break;
 
       case false:
-        setFirstRoleChampions([...firstRoleChampions, `${champion}`]);
-        setFormData({ ...formData, firstRoleChamps: firstRoleChampions });
+        setFormData({
+          ...formData,
+          firstRoleChamps: [...formData.firstRoleChamps, champion],
+        });
         break;
 
       default:
@@ -155,18 +154,21 @@ const CreateSummonerForm = ({ handledSummoner }: SummonerProp): JSX.Element => {
   };
 
   const toggleSecondRoleChampion = (champion: string) => {
-    switch (secondRoleChampions.includes(champion)) {
+    switch (formData.secondRoleChamps.includes(champion)) {
       case true:
-        const newChamps = secondRoleChampions.filter(
-          (champ) => champ !== champion
-        );
-        setSecondRoleChampions(newChamps);
-        setFormData({ ...formData, secondRoleChamps: newChamps });
+        setFormData({
+          ...formData,
+          secondRoleChamps: formData.secondRoleChamps.filter(
+            (champ) => champ !== champion
+          ),
+        });
         break;
 
       case false:
-        setSecondRoleChampions([...secondRoleChampions, `${champion}`]);
-        setFormData({ ...formData, secondRoleChamps: secondRoleChampions });
+        setFormData({
+          ...formData,
+          secondRoleChamps: [...formData.secondRoleChamps, champion],
+        });
         break;
 
       default:
@@ -325,6 +327,7 @@ const CreateSummonerForm = ({ handledSummoner }: SummonerProp): JSX.Element => {
           autoComplete="off"
           placeholder="Escribe un poquito sobre tu cuenta"
           maxLength={150}
+          defaultValue={handledSummoner ? handledSummoner.description : ""}
         ></textarea>
         <button disabled={buttonDisable} type="submit">
           {handledSummoner ? "Editar Invocador" : "Crear Invocador"}

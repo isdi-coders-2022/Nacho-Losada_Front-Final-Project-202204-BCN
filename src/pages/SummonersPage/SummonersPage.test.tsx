@@ -23,7 +23,7 @@ describe("Given a SummonersPage component", () => {
 
     describe("When it's rendered and there are 2 summoners in the state", () => {
       test("Then it should render as many list items as summoners", () => {
-        const mockSlice = createSlice({
+        const mockSummonerSlice = createSlice({
           name: "summoners",
           initialState: mockSummoners,
           reducers: {
@@ -31,8 +31,18 @@ describe("Given a SummonersPage component", () => {
               action.payload,
           },
         });
+        const mockUserSlice = createSlice({
+          name: "user",
+          initialState: { name: "string", username: "string", logged: true },
+          reducers: {
+            login: (user, action) => ({ ...action.payload, logged: true }),
+          },
+        });
         const mockStore = configureStore({
-          reducer: { summoners: mockSlice.reducer },
+          reducer: {
+            summoners: mockSummonerSlice.reducer,
+            user: mockUserSlice.reducer,
+          },
         });
 
         render(

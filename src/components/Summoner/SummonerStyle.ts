@@ -29,7 +29,8 @@ const SummonerStyle = styled.div`
     }
 
     &__rank-emblem {
-      width: 150px;
+      height: 120px;
+      width: 105px;
     }
 
     &__description {
@@ -46,6 +47,31 @@ const SummonerStyle = styled.div`
 
   .summoner__right-block {
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .summoner__actions-container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+  }
+
+  .summoner__actions {
+    &--delete {
+      filter: invert(50%) sepia(78%) saturate(6572%) hue-rotate(345deg)
+        brightness(103%) contrast(88%);
+    }
+
+    &--edit {
+      filter: invert(95%) sepia(12%) saturate(4003%) hue-rotate(317deg)
+        brightness(92%) contrast(96%);
+    }
   }
 
   p,
