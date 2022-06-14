@@ -11,9 +11,11 @@ describe("Given a SummonersPage component", () => {
   describe("When it's rendered", () => {
     test("Then it should show a list", () => {
       render(
-        <Provider store={store}>
-          <SummonersPage />
-        </Provider>
+        <BrowserRouter>
+          <Provider store={store}>
+            <SummonersPage />
+          </Provider>
+        </BrowserRouter>
       );
 
       const list = screen.getByRole("list");
@@ -31,6 +33,14 @@ describe("Given a SummonersPage component", () => {
               action.payload,
           },
         });
+        const mockOwnSummonerSlice = createSlice({
+          name: "ownSummoners",
+          initialState: mockSummoners,
+          reducers: {
+            loadOwnList: (ownSummoners, action: PayloadAction<ISummoner[]>) =>
+              action.payload,
+          },
+        });
         const mockUserSlice = createSlice({
           name: "user",
           initialState: { name: "string", username: "string", logged: true },
@@ -42,6 +52,7 @@ describe("Given a SummonersPage component", () => {
           reducer: {
             summoners: mockSummonerSlice.reducer,
             user: mockUserSlice.reducer,
+            ownSummoners: mockOwnSummonerSlice.reducer,
           },
         });
 

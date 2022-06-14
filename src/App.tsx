@@ -81,6 +81,14 @@ function App(): JSX.Element {
             </LoggedGatekeeper>
           }
         />
+        <Route
+          path="/user/my-summoners"
+          element={
+            <LoggedGatekeeper>
+              <SummonersPage />
+            </LoggedGatekeeper>
+          }
+        />
         <Route path="/*" element={<NotFoundPage />} />
       </Routes>
       <Footer />
