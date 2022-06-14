@@ -57,11 +57,19 @@ const Menu = (): JSX.Element => {
                 </p>
               </li>
             )}
-            <li>
-              <NavLink to="/register">
-                <p className="menu__link">Register</p>
-              </NavLink>
-            </li>
+            {!name ? (
+              <li>
+                <NavLink to="/register">
+                  <p className="menu__link">Register</p>
+                </NavLink>
+              </li>
+            ) : (
+              <li>
+                <NavLink to="/user/my-summoners">
+                  <p className="menu__link">Mis invocadores</p>
+                </NavLink>
+              </li>
+            )}
             <li>
               <div className="menu__separator"></div>
             </li>
