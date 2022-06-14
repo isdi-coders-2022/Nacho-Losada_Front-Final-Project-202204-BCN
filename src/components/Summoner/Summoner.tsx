@@ -76,34 +76,6 @@ const Summoner = ({
               height="40"
             />
           </div>
-          <div className="summoner__second-role">
-            <img
-              src={`images/positions/${secondRole}.webp`}
-              alt={secondRole}
-              className="summoner__ico"
-            />
-            <img
-              src={`${championImageUrl}${secondRoleChamps[0]}.webp`}
-              alt={`${firstRoleChamps[0]} icon`}
-              className="summoner__ico"
-              width="40"
-              height="40"
-            />
-            <img
-              src={`${championImageUrl}${secondRoleChamps[1]}.webp`}
-              alt={`${firstRoleChamps[1]} icon`}
-              className="summoner__ico"
-              width="40"
-              height="40"
-            />
-            <img
-              src={`${championImageUrl}${secondRoleChamps[2]}.webp`}
-              alt={`${firstRoleChamps[2]} icon`}
-              className="summoner__ico"
-              width="40"
-              height="40"
-            />
-          </div>
         </div>
       </div>
       <div className="summoner__rank-container summoner__right-block">

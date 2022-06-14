@@ -7,7 +7,7 @@ import CreateSummonerForm from "./CreateSummonerForm";
 describe("Given a CreateSumonerForm component", () => {
   describe("When it's rendered", () => {
     test("Then it should show 4 dropwdown list selectors", () => {
-      const exepctedSelectors = 4;
+      const exepctedSelectors = 3;
 
       render(
         <Provider store={store}>
@@ -20,8 +20,8 @@ describe("Given a CreateSumonerForm component", () => {
     });
   });
 
-  describe("When it's rendered and the user fills all the form fields", () => {
-    test("Then the button should be enabled", () => {
+  describe("When it's rendered and the user fills and submit the formulary", () => {
+    test("Then the summonername input should be empty", () => {
       const inputText = "test-text";
 
       render(
@@ -47,22 +47,18 @@ describe("Given a CreateSumonerForm component", () => {
 
       const roleOption = "Top";
       userEvent.selectOptions(dropDownSelectors[2], roleOption);
-      userEvent.selectOptions(dropDownSelectors[3], roleOption);
 
       const firstRoleChamps = screen.getAllByAltText(/ahri/i);
       userEvent.click(firstRoleChamps[0]);
-      userEvent.click(firstRoleChamps[1]);
-
-      const secondRoleChamps = screen.getAllByAltText(/zac/i);
-      userEvent.click(secondRoleChamps[0]);
-      userEvent.click(secondRoleChamps[1]);
+      userEvent.dblClick(firstRoleChamps[0]);
 
       const descriptionInput = screen.getByPlaceholderText(
         "Escribe un poquito sobre tu cuenta"
       );
       userEvent.type(descriptionInput, inputText);
+      userEvent.click(button);
 
-      expect(button).not.toBeDisabled();
+      expect(nameInput.innerHTML).toBe("");
     });
   });
 });

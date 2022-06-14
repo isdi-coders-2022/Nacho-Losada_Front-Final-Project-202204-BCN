@@ -102,8 +102,6 @@ const CreateSummonerForm = ({ handledSummoner }: SummonerProp): JSX.Element => {
       formData.rank !== "" &&
       formData.firstRole !== "" &&
       formData.firstRoleChamps !== [] &&
-      formData.secondRole !== "" &&
-      formData.secondRoleChamps !== [] &&
       formData.description !== ""
     ) {
       setButtonDisable(false);
@@ -145,29 +143,6 @@ const CreateSummonerForm = ({ handledSummoner }: SummonerProp): JSX.Element => {
         setFormData({
           ...formData,
           firstRoleChamps: [...formData.firstRoleChamps, champion],
-        });
-        break;
-
-      default:
-        break;
-    }
-  };
-
-  const toggleSecondRoleChampion = (champion: string) => {
-    switch (formData.secondRoleChamps.includes(champion)) {
-      case true:
-        setFormData({
-          ...formData,
-          secondRoleChamps: formData.secondRoleChamps.filter(
-            (champ) => champ !== champion
-          ),
-        });
-        break;
-
-      case false:
-        setFormData({
-          ...formData,
-          secondRoleChamps: [...formData.secondRoleChamps, champion],
         });
         break;
 
@@ -274,43 +249,6 @@ const CreateSummonerForm = ({ handledSummoner }: SummonerProp): JSX.Element => {
                     alt={champion}
                     className="champion"
                     onClick={() => toggleFirstRoleChampion(champion)}
-                  />
-                </label>
-              </li>
-            ))}
-          </ul>
-        </ChampionListFormStyle>
-        <select
-          id="secondRole"
-          onChange={changeSelectData}
-          className="new-summoner-form__input"
-          defaultValue={handledSummoner ? handledSummoner.secondRole : "Rol 2"}
-        >
-          <option hidden value={"Rol 2"}>
-            Rol 2
-          </option>
-          <option value="Top">Top</option>
-          <option value="Jungle">Jungla</option>
-          <option value="Mid">Mid</option>
-          <option value="Support">Support</option>
-          <option value="Bot">Bot</option>
-        </select>
-        <ChampionListFormStyle>
-          <ul>
-            {champions.map((champion) => (
-              <li key={`${champion}_2`}>
-                <input
-                  className="checkbox"
-                  type="checkbox"
-                  id={champion}
-                  value={`${champion}`}
-                />
-                <label htmlFor={`${champion}`}>
-                  <img
-                    src={`/images/champions/${champion}.webp`}
-                    alt={champion}
-                    className="champion"
-                    onClick={() => toggleSecondRoleChampion(champion)}
                   />
                 </label>
               </li>
