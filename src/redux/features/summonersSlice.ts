@@ -27,5 +27,6 @@ export const {
   loadList: loadListActionCreator,
   deleteSummoner: deleteSummonerActionCreator,
   createSummoner: createSummonerActionCreator,
+  editSummoner: editSummonerActionCreator,
 } = summonersSlice.actions;
 export default summonersSlice.reducer;
