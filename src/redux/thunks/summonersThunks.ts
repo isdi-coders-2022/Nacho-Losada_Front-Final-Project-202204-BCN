@@ -149,7 +149,7 @@ export const editSummonerThunk =
         dispatch(loadOffActionCreator());
       } catch (error) {
         const errorLoginText =
-          '"-No se ha podido crear al invocador. Inténtalo de nuevo."';
+          '"-No se ha podido editar al invocador. Inténtalo de nuevo."';
 
         toast.error(CustomToast(errorIcon, errorLoginText), {
           position: "bottom-center",
@@ -160,7 +160,7 @@ export const editSummonerThunk =
       }
     } else {
       const warningText =
-        '"-Tienes que estar loggeado para crear un invocador"';
+        '"-Tienes que estar loggeado para editar un invocador"';
 
       toast.warning(CustomToast(warningIcon, warningText), {
         position: "bottom-center",

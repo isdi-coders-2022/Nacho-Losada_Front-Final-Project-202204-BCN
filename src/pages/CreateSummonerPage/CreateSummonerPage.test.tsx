@@ -6,7 +6,7 @@ import CreateSummonerPage from "./CreateSummonerPage";
 describe("Given a CreateSummonerPage component", () => {
   describe("When it's rendered", () => {
     test("Then it should show 4 dropwdown list selectors", () => {
-      const exepctedSelectors = 4;
+      const exepctedSelectors = 3;
 
       render(
         <Provider store={store}>
