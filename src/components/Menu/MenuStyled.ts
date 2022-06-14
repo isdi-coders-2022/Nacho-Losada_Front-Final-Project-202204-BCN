@@ -11,8 +11,15 @@ const MenuStyled = styled.div`
     transition: all 0.4s ease;
   }
 
+  ul,
+  div {
+    display: flex;
+    align-content: center;
+  }
+
   .menu__separator {
-    width: 130px;
+    max-width: 290px;
+    width: 60vw;
     height: 5px;
     background: linear-gradient(90deg, #e6a94d 50%, #dfd1b2 100%);
   }
@@ -81,9 +88,11 @@ const MenuStyled = styled.div`
   }
 
   .toggler:checked ~ .menu {
-    width: 200px;
+    width: 70vw;
+    max-width: 320px;
     height: 300px;
     transition: all 0.4s ease;
+    display: flex;
   }
 
   .menu__list {
