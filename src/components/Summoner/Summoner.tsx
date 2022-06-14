@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch } from "../../redux/hooks/hooks";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
 import { deleteSummonerThunk } from "../../redux/thunks/summonersThunks";
 import SummonerStyle from "./SummonerStyle";
 
@@ -37,6 +37,8 @@ const Summoner = ({
   const championImageUrl = `images/champions/`;
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+
+  const nameOfUser: string = useAppSelector((state) => state.user.name);
 
   return (
     <SummonerStyle>
@@ -117,16 +119,22 @@ const Summoner = ({
         </p>
       </div>
       <div className="summoner__actions-container">
-        <img
-          src="icons/delete.svg"
-          alt=""
-          onClick={() => dispatch(deleteSummonerThunk(id, summonerName))}
-        />
-        <img
-          src="icons/edit.svg"
-          alt=""
-          onClick={() => navigate(`/summoners/edit/${id}`)}
-        />
+        {nameOfUser === creatorName && (
+          <>
+            <img
+              className="summoner__actions summoner__actions--delete"
+              src="icons/delete.svg"
+              alt=""
+              onClick={() => dispatch(deleteSummonerThunk(id, summonerName))}
+            />
+            <img
+              className="summoner__actions summoner__actions--edit"
+              src="icons/edit.svg"
+              alt=""
+              onClick={() => navigate(`/summoners/edit/${id}`)}
+            />
+          </>
+        )}
       </div>
       <p className="summoner__description">{description}</p>
     </SummonerStyle>
