@@ -48,29 +48,29 @@ const Summoner = ({
         <div className="summoner__role-container">
           <div className="summoner__first-role">
             <img
-              src={`images/positions/${firstRole}.webp`}
+              src={`/images/positions/${firstRole}.webp`}
               alt={firstRole}
               className="summoner__ico"
               width="40"
               height="40"
             />
             <img
-              src={`${championImageUrl}${firstRoleChamps[0]}.webp`}
-              alt={`${firstRoleChamps[0]} icon`}
+              src={`/${championImageUrl}${firstRoleChamps[0]}.webp`}
+              alt={`/${firstRoleChamps[0]} icon`}
               className="summoner__ico"
               width="40"
               height="40"
             />
             <img
-              src={`${championImageUrl}${firstRoleChamps[1]}.webp`}
-              alt={`${firstRoleChamps[1]} icon`}
+              src={`/${championImageUrl}${firstRoleChamps[1]}.webp`}
+              alt={`/${firstRoleChamps[1]} icon`}
               className="summoner__ico"
               width="40"
               height="40"
             />
             <img
-              src={`${championImageUrl}${firstRoleChamps[2]}.webp`}
-              alt={`${firstRoleChamps[2]} icon`}
+              src={`/${championImageUrl}${firstRoleChamps[2]}.webp`}
+              alt={`/${firstRoleChamps[2]} icon`}
               className="summoner__ico"
               width="40"
               height="40"
@@ -80,7 +80,7 @@ const Summoner = ({
       </div>
       <div className="summoner__rank-container summoner__right-block">
         <img
-          src={`images/rank-emblems/${rank}.webp`}
+          src={`/images/rank-emblems/${rank}.webp`}
           alt={rank}
           className="summoner__rank-emblem"
           width="150"
@@ -95,13 +95,13 @@ const Summoner = ({
           <>
             <img
               className="summoner__actions summoner__actions--delete"
-              src="icons/delete.svg"
+              src="/icons/delete.svg"
               alt=""
               onClick={() => dispatch(deleteSummonerThunk(id, summonerName))}
             />
             <img
               className="summoner__actions summoner__actions--edit"
-              src="icons/edit.svg"
+              src="/icons/edit.svg"
               alt=""
               onClick={() => navigate(`/summoners/edit/${id}`)}
             />
