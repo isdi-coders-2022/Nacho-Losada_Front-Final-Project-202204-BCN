@@ -1,6 +1,6 @@
-import { configureStore, createSlice } from "@reduxjs/toolkit";
 import { render } from "@testing-library/react";
 import { Provider } from "react-redux";
+import { store } from "../../redux/store/store";
 import LoggedGatekeeper from "./LoggedGatekeeper";
 
 const mockUseNavigate = jest.fn();
@@ -14,17 +14,10 @@ describe("Given a LoggedGatekeeper component", () => {
     test("Then it should navigate to '/login'", () => {
       const testComponent = <p>Hello boss</p>;
 
-      const userMockSlice = createSlice({
-        name: "user",
-        initialState: { name: "" },
-        reducers: {},
-      });
-      const mockStore = configureStore({
-        reducer: { user: userMockSlice.reducer },
-      });
+      jest.spyOn(Storage.prototype, "getItem").mockReturnValue(null);
 
       render(
-        <Provider store={mockStore}>
+        <Provider store={store}>
           <LoggedGatekeeper>{testComponent}</LoggedGatekeeper>
         </Provider>
       );
@@ -37,17 +30,10 @@ describe("Given a LoggedGatekeeper component", () => {
     test("Then it should navigate to '/login'", () => {
       const testComponent = <p>Hello boss</p>;
 
-      const userMockSlice = createSlice({
-        name: "user",
-        initialState: { name: "Charles" },
-        reducers: {},
-      });
-      const mockStore = configureStore({
-        reducer: { user: userMockSlice.reducer },
-      });
+      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
 
       render(
-        <Provider store={mockStore}>
+        <Provider store={store}>
           <LoggedGatekeeper>{testComponent}</LoggedGatekeeper>
         </Provider>
       );

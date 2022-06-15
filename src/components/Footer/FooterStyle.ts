@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const FooterStyle = styled.nav`
+  z-index: 30;
   position: fixed;
   bottom: 0;
   padding: 20px;
@@ -27,8 +28,8 @@ const FooterStyle = styled.nav`
     width: 40px;
     filter: invert(96%) sepia(84%) saturate(347%) hue-rotate(77deg)
       brightness(99%) contrast(87%);
-    z-index: 1;
   }
+
   li {
     justify-content: center;
     margin: 0px 2rem;
