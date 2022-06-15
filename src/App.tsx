@@ -19,6 +19,7 @@ import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import EditSummonerPage from "./pages/EditSummonerPage/EditSummonerPage";
 
 function App(): JSX.Element {
+  debugger;
   const isLoading: boolean = useAppSelector((state) => state.ui.loading);
 
   const token = localStorage.getItem("token");
