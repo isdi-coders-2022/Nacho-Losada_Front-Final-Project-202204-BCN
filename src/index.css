@@ -28,6 +28,20 @@ code {
     monospace;
 }
 
+button {
+  width: 80px;
+  height: 38px;
+  border-radius: 10px;
+  background-color: #dfd1b2;
+  color: #452805;
+  font-size: 22px;
+  font-family: "Marcellus", sans-serif;
+}
+
+button:active {
+  background-color: #e6a94d;
+}
+
 .Toastify {
   --linear-gold: linear-gradient(90deg, #e6a94d, #ffffff);
 
