@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { useAppSelector } from "../../redux/hooks/hooks";
 import { warningIcon } from "../../utils/icons";
 import CustomToast from "../CustomToast/CustomToast";
 
@@ -12,11 +11,12 @@ interface Props {
 const errorLoginText = "-Tienes que estar logeado para entrar aquí";
 
 const LoggedGatekeeper = ({ children }: Props) => {
-  const { name } = useAppSelector((state) => state.user);
+  const token = localStorage.getItem("token");
+
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!name) {
+    if (!token) {
       toast.error(CustomToast(warningIcon, errorLoginText), {
         position: "bottom-center",
         hideProgressBar: true,
@@ -24,9 +24,9 @@ const LoggedGatekeeper = ({ children }: Props) => {
       });
       navigate("/login");
     }
-  }, [name, navigate]);
+  }, [token, navigate]);
 
-  return <>{name && children}</>;
+  return <>{token && children}</>;
 };
 
 export default LoggedGatekeeper;
