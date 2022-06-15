@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 import { store } from "../../redux/store/store";
 import CreateSummonerPage from "./CreateSummonerPage";
 
@@ -9,9 +10,11 @@ describe("Given a CreateSummonerPage component", () => {
       const exepctedSelectors = 3;
 
       render(
-        <Provider store={store}>
-          <CreateSummonerPage />
-        </Provider>
+        <BrowserRouter>
+          <Provider store={store}>
+            <CreateSummonerPage />
+          </Provider>
+        </BrowserRouter>
       );
       const shownSelectors = screen.getAllByRole("combobox");
 
