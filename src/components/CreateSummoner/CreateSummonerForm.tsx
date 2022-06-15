@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
+import { loadOwnSummonersThunk } from "../../redux/thunks/ownSummonersThunks";
 import {
   createSummonerThunk,
   editSummonerThunk,
+  loadSummonersThunk,
 } from "../../redux/thunks/summonersThunks";
 import champions from "../../utils/champions";
 import { ISummoner } from "../Summoner/Summoner";
@@ -29,7 +31,7 @@ export interface SummonerProp {
 }
 
 const CreateSummonerForm = ({ handledSummoner }: SummonerProp): JSX.Element => {
-  const nameOfUser: string = useAppSelector((state) => state.user.name);
+  const { name } = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -47,7 +49,7 @@ const CreateSummonerForm = ({ handledSummoner }: SummonerProp): JSX.Element => {
   const [formData, setFormData] = useState(blankData);
   const [buttonDisable, setButtonDisable] = useState(true);
 
-  formData.creatorName = nameOfUser;
+  formData.creatorName = name;
 
   useEffect(() => {
     if (
@@ -103,11 +105,15 @@ const CreateSummonerForm = ({ handledSummoner }: SummonerProp): JSX.Element => {
     event.preventDefault();
     if (handledSummoner) {
       dispatch(editSummonerThunk(handledSummoner.id, formData));
+      dispatch(loadSummonersThunk());
+      dispatch(loadOwnSummonersThunk(name));
+
       navigate("/user/my-summoners");
       return;
     }
 
     dispatch(createSummonerThunk(formData));
+    dispatch(loadSummonersThunk());
     navigate("/summoners");
     resetForm();
   };

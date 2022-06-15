@@ -1,6 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
-import { deleteSummonerThunk } from "../../redux/thunks/summonersThunks";
+import { loadOwnSummonersThunk } from "../../redux/thunks/ownSummonersThunks";
+import {
+  deleteSummonerThunk,
+  loadSummonersThunk,
+} from "../../redux/thunks/summonersThunks";
 import SummonerStyle from "./SummonerStyle";
 
 interface Props {
@@ -36,7 +40,7 @@ const Summoner = ({
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const nameOfUser: string = useAppSelector((state) => state.user.name);
+  const { name } = useAppSelector((state) => state.user);
 
   return (
     <SummonerStyle>
@@ -90,7 +94,7 @@ const Summoner = ({
           </p>
         </div>
         <div className="summoner__actions-container">
-          {nameOfUser === creatorName && (
+          {name === creatorName && (
             <>
               <img
                 className="summoner__actions summoner__actions--delete"
@@ -98,7 +102,11 @@ const Summoner = ({
                 alt=""
                 width="24"
                 height="24"
-                onClick={() => dispatch(deleteSummonerThunk(id, summonerName))}
+                onClick={() => {
+                  dispatch(deleteSummonerThunk(id, summonerName));
+                  dispatch(loadSummonersThunk());
+                  dispatch(loadOwnSummonersThunk(name));
+                }}
               />
               <img
                 className="summoner__actions summoner__actions--edit"
