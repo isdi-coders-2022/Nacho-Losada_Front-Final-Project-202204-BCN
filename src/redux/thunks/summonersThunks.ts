@@ -78,7 +78,7 @@ export const createSummonerThunk =
   (formData: IFormData) => async (dispatch: AppDispatch) => {
     dispatch(loadOnActionCreator());
     const token = localStorage.getItem("token");
-    const succesLoginText = `"-Has creado a ${formData.summonerName}"`;
+    const successLoginText = `"-Has creado a ${formData.summonerName}"`;
 
     if (token) {
       try {
@@ -91,7 +91,7 @@ export const createSummonerThunk =
             },
           }
         );
-        toast.success(CustomToast(successIcon, succesLoginText), {
+        toast.success(CustomToast(successIcon, successLoginText), {
           position: "bottom-center",
           hideProgressBar: true,
           progress: undefined,
@@ -110,10 +110,9 @@ export const createSummonerThunk =
         dispatch(loadOffActionCreator());
       }
     } else {
-      const warningText =
-        '"-Tienes que estar loggeado para crear un invocador"';
+      const warnngText = '"-Tienes que estar loggeado para crear un invocador"';
 
-      toast.warning(CustomToast(warningIcon, warningText), {
+      toast.warning(CustomToast(warningIcon, warnngText), {
         position: "bottom-center",
         hideProgressBar: true,
         progress: undefined,
