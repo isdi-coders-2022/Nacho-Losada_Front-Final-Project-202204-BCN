@@ -1,5 +1,4 @@
 import { ChangeEventHandler, useEffect, useState } from "react";
-import styled from "styled-components";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
 import {
   createSummonerThunk,
@@ -7,67 +6,10 @@ import {
 } from "../../redux/thunks/summonersThunks";
 import champions from "../../utils/champions";
 import { ISummoner } from "../Summoner/Summoner";
-
-const CreateSummonerStyle = styled.div`
-  margin-bottom: 180px;
-
-  .new-summoner-form {
-    &__invisible-label {
-      display: none;
-    }
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
-  .new-summoner-form__input {
-    width: 300px;
-    height: 50px;
-    border-radius: 10px;
-  }
-`;
-
-const ChampionListFormStyle = styled.div`
-  list-style-type: none;
-  display: flex;
-  justify-content: center;
-
-  ul {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: center;
-    margin: 0 30px 10px 30px;
-    padding: 0;
-  }
-
-  li {
-    display: inline-block;
-  }
-
-  input[type="checkbox"] {
-    display: none;
-  }
-
-  input + label > img {
-    display: inline-block;
-    height: 70px;
-  }
-
-  input[type="checkbox"]:checked + label > img {
-    border: 2px solid #e6a94d;
-    border-radius: 5px;
-  }
-
-  .span {
-    background: linear-gradient(90deg, #e6a94d 50%, #dfd1b2 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-size: 20px;
-    text-shadow: 3px 3px 1px rgba(230, 169, 77, 0.25);
-  }
-`;
+import {
+  ChampionListFormStyle,
+  CreateSummonerFormStyle,
+} from "./CreateSummonerFormStyle";
 
 export interface IFormData {
   summonerName: string;
@@ -123,16 +65,11 @@ const CreateSummonerForm = ({ handledSummoner }: SummonerProp): JSX.Element => {
     setFormData(blankData);
   };
 
-  const changeData: ChangeEventHandler<HTMLInputElement> = (event) => {
-    setFormData({ ...formData, [event.target.id]: event.target.value });
-  };
-
-  const changeSelectData: ChangeEventHandler<HTMLSelectElement> = (event) => {
-    setFormData({ ...formData, [event.target.id]: event.target.value });
-  };
-
-  const changeTextAreaData: ChangeEventHandler<HTMLTextAreaElement> = (
-    event
+  const changeData = (
+    event:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLSelectElement>
+      | React.ChangeEvent<HTMLTextAreaElement>
   ) => {
     setFormData({ ...formData, [event.target.id]: event.target.value });
   };
@@ -172,7 +109,7 @@ const CreateSummonerForm = ({ handledSummoner }: SummonerProp): JSX.Element => {
   };
 
   return (
-    <CreateSummonerStyle>
+    <CreateSummonerFormStyle>
       <form
         onSubmit={submitSummoner}
         autoComplete="off"
@@ -194,7 +131,7 @@ const CreateSummonerForm = ({ handledSummoner }: SummonerProp): JSX.Element => {
         <p className="new-summoner-form__invisible-label">Rango</p>
         <select
           id="rank"
-          onChange={changeSelectData}
+          onChange={changeData}
           className="new-summoner-form__input"
           defaultValue={
             handledSummoner ? handledSummoner.rank : "Rango del invocador"
@@ -216,7 +153,7 @@ const CreateSummonerForm = ({ handledSummoner }: SummonerProp): JSX.Element => {
         </select>
         <select
           id="division"
-          onChange={changeSelectData}
+          onChange={changeData}
           className="new-summoner-form__input"
           defaultValue={handledSummoner ? handledSummoner.division : "division"}
         >
@@ -231,7 +168,7 @@ const CreateSummonerForm = ({ handledSummoner }: SummonerProp): JSX.Element => {
         </select>
         <select
           id="firstRole"
-          onChange={changeSelectData}
+          onChange={changeData}
           className="new-summoner-form__input"
           defaultValue={handledSummoner ? handledSummoner.firstRole : "Rol 1"}
         >
@@ -244,7 +181,7 @@ const CreateSummonerForm = ({ handledSummoner }: SummonerProp): JSX.Element => {
           <option value="Support">Support</option>
           <option value="Bot">Bot</option>
         </select>
-        <span className="new-summoner-form__champion-text">
+        <span className="new-summoner-form__champion-select-text">
           Elige 3 campeones
         </span>
         <ChampionListFormStyle>
@@ -256,13 +193,17 @@ const CreateSummonerForm = ({ handledSummoner }: SummonerProp): JSX.Element => {
                   type="checkbox"
                   id={champion}
                   value={champion}
+                  onClick={() => toggleFirstRoleChampion(champion)}
                 />
                 <label htmlFor={champion}>
                   <img
                     src={`/images/champions/${champion}.webp`}
                     alt={champion}
-                    className="champion"
-                    onClick={() => toggleFirstRoleChampion(champion)}
+                    className={
+                      formData.firstRoleChamps.length < 3
+                        ? `champion`
+                        : `champion grayscale`
+                    }
                   />
                 </label>
               </li>
@@ -275,17 +216,17 @@ const CreateSummonerForm = ({ handledSummoner }: SummonerProp): JSX.Element => {
           name="description"
           rows={5}
           cols={33}
-          onChange={changeTextAreaData}
+          onChange={changeData}
           autoComplete="off"
           placeholder="Escribe un poquito sobre tu cuenta"
           maxLength={150}
           defaultValue={handledSummoner ? handledSummoner.description : ""}
         ></textarea>
         <button disabled={buttonDisable} type="submit">
-          {handledSummoner ? "Editar Invocador" : "Crear Invocador"}
+          {handledSummoner ? "Editar" : "Crear"}
         </button>
       </form>
-    </CreateSummonerStyle>
+    </CreateSummonerFormStyle>
   );
 };
 
