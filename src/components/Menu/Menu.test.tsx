@@ -14,7 +14,7 @@ jest.mock("react-redux", () => ({
   useDispatch: () => mockDispatch,
 }));
 
-describe("Given a Menu", () => {
+describe("Given a Menu component", () => {
   describe("When it's rendered and the user is not logged", () => {
     test("Then it should show 'Login' and 'Register'", () => {
       render(

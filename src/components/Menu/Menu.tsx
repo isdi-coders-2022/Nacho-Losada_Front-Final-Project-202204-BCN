@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -27,9 +28,28 @@ const Menu = (): JSX.Element => {
     dispatch(logoutActionCreator());
   };
 
+  const [toggler] = useState("toggler");
+  let checkbox: any;
+
+  const removeCheckedProperty = () => {
+    if (checkbox.type === "checkbox") {
+      checkbox.checked = false;
+    }
+  };
+
+  const unckeck = () => {
+    removeCheckedProperty();
+    logoutUser();
+  };
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    checkbox = document.querySelector(".toggler");
+  }, [toggler]);
+
   return (
     <MenuStyled>
-      <input type="checkbox" className="toggler" />
+      <input type="checkbox" className={`${toggler}`} />
       <div className="hamburger">
         <div></div>
       </div>
@@ -47,12 +67,14 @@ const Menu = (): JSX.Element => {
             {!name ? (
               <li>
                 <NavLink to="/login">
-                  <p className="menu__link">Login</p>
+                  <p className="menu__link" onClick={removeCheckedProperty}>
+                    Login
+                  </p>
                 </NavLink>
               </li>
             ) : (
               <li>
-                <p className="menu__link" onClick={() => logoutUser()}>
+                <p className="menu__link" onClick={unckeck}>
                   Salir
                 </p>
               </li>
@@ -60,13 +82,17 @@ const Menu = (): JSX.Element => {
             {!name ? (
               <li>
                 <NavLink to="/register">
-                  <p className="menu__link">Register</p>
+                  <p className="menu__link" onClick={removeCheckedProperty}>
+                    Register
+                  </p>
                 </NavLink>
               </li>
             ) : (
               <li>
                 <NavLink to="/user/my-summoners">
-                  <p className="menu__link">Mis invocadores</p>
+                  <p className="menu__link" onClick={removeCheckedProperty}>
+                    Mis invocadores
+                  </p>
                 </NavLink>
               </li>
             )}
