@@ -42,6 +42,7 @@ export const deleteSummonerThunk =
           }
         );
 
+        dispatch(deleteSummonerActionCreator(idToDelete));
         toast.success(CustomToast(warningIcon, succesLoginText), {
           position: "bottom-center",
           hideProgressBar: true,
