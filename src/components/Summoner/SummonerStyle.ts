@@ -5,7 +5,7 @@ const SummonerStyle = styled.div`
   border-radius: 10px;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
   margin-bottom: 20px;
   align-content: center;
 
@@ -42,7 +42,7 @@ const SummonerStyle = styled.div`
     margin-bottom: 10px;
   }
   .summoner__left-block {
-    margin-left: 15px;
+    margin-left: 10px;
   }
 
   .summoner__right-block {
@@ -60,8 +60,14 @@ const SummonerStyle = styled.div`
     justify-content: center;
     align-items: center;
     gap: 50px;
+    margin-right: 10px;
+    width: 24px;
   }
 
+  .test {
+    display: flex;
+    flex-direction: row;
+  }
   .summoner__actions {
     &--delete {
       filter: invert(50%) sepia(78%) saturate(6572%) hue-rotate(345deg)

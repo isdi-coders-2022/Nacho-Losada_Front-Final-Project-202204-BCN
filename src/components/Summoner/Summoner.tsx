@@ -76,39 +76,41 @@ const Summoner = ({
           </div>
         </div>
       </div>
-      <div className="summoner__rank-container summoner__right-block">
-        <img
-          src={`/images/rank-emblems/${rank}.webp`}
-          alt={rank}
-          className="summoner__rank-emblem"
-          width="150"
-          height="171.38"
-        />
-        <p className="summoner__rank-text">
-          {rank} {division}
-        </p>
-      </div>
-      <div className="summoner__actions-container">
-        {nameOfUser === creatorName && (
-          <>
-            <img
-              className="summoner__actions summoner__actions--delete"
-              src="/icons/delete.svg"
-              alt=""
-              width="24"
-              height="24"
-              onClick={() => dispatch(deleteSummonerThunk(id, summonerName))}
-            />
-            <img
-              className="summoner__actions summoner__actions--edit"
-              src="/icons/edit.svg"
-              alt=""
-              width="24"
-              height="24"
-              onClick={() => navigate(`/summoners/edit/${id}`)}
-            />
-          </>
-        )}
+      <div className="test">
+        <div className="summoner__rank-container summoner__right-block">
+          <img
+            src={`/images/rank-emblems/${rank}.webp`}
+            alt={rank}
+            className="summoner__rank-emblem"
+            width="105"
+            height="120"
+          />
+          <p className="summoner__rank-text">
+            {rank} {division}
+          </p>
+        </div>
+        <div className="summoner__actions-container">
+          {nameOfUser === creatorName && (
+            <>
+              <img
+                className="summoner__actions summoner__actions--delete"
+                src="/icons/delete.svg"
+                alt=""
+                width="24"
+                height="24"
+                onClick={() => dispatch(deleteSummonerThunk(id, summonerName))}
+              />
+              <img
+                className="summoner__actions summoner__actions--edit"
+                src="/icons/edit.svg"
+                alt=""
+                width="24"
+                height="24"
+                onClick={() => navigate(`/summoners/edit/${id}`)}
+              />
+            </>
+          )}
+        </div>
       </div>
       <p className="summoner__description">{description}</p>
     </SummonerStyle>
