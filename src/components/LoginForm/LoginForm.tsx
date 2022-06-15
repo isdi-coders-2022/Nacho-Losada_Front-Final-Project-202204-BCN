@@ -13,11 +13,27 @@ const LoginFormStyle = styled.div`
     flex-direction: column;
     align-items: center;
     gap: 10px;
+
+    &__input {
+      width: 300px;
+      height: 50px;
+      border-radius: 10px;
+    }
   }
-  .login-form__input {
-    width: 300px;
-    height: 50px;
-    border-radius: 10px;
+
+  input::placeholder {
+    font-size: 1.1rem;
+    padding-left: 10px;
+  }
+
+  p {
+    text-align: center;
+    background: linear-gradient(90deg, #e6a94d 50%, #dfd1b2 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.8rem;
+    margin: 10px;
   }
 `;
 
@@ -87,6 +103,10 @@ const LoginForm = (): JSX.Element => {
           Login
         </button>
       </form>
+      <p>No tienes cuenta?</p>
+      <p>
+        Registrate <span>aquí</span>
+      </p>
     </LoginFormStyle>
   );
 };

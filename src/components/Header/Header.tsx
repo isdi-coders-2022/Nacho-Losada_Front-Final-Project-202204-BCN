@@ -9,6 +9,7 @@ const Header = (): JSX.Element => {
     position: sticky;
     top: 0;
     height: 110px;
+    z-index: 10;
 
     background: linear-gradient(
       0deg,
