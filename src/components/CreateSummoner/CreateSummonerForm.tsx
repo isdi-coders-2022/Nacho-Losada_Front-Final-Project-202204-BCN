@@ -12,7 +12,7 @@ const CreateSummonerStyle = styled.div`
   margin-bottom: 180px;
 
   .new-summoner-form {
-    p {
+    &__invisible-label {
       display: none;
     }
     display: flex;
@@ -57,6 +57,15 @@ const ChampionListFormStyle = styled.div`
   input[type="checkbox"]:checked + label > img {
     border: 2px solid #e6a94d;
     border-radius: 5px;
+  }
+
+  .span {
+    background: linear-gradient(90deg, #e6a94d 50%, #dfd1b2 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 20px;
+    text-shadow: 3px 3px 1px rgba(230, 169, 77, 0.25);
   }
 `;
 
@@ -171,7 +180,9 @@ const CreateSummonerForm = ({ handledSummoner }: SummonerProp): JSX.Element => {
         className="new-summoner-form"
       >
         <label htmlFor="summonerName" />
-        <p>Nombre de invocador</p>
+        <p className="new-summoner-form__invisible-label">
+          Nombre de invocador
+        </p>
         <input
           placeholder="Nombre de invocador"
           id="summonerName"
@@ -180,7 +191,7 @@ const CreateSummonerForm = ({ handledSummoner }: SummonerProp): JSX.Element => {
           className="new-summoner-form__input"
         ></input>
         <label htmlFor="rank" />
-        <p>Rango</p>
+        <p className="new-summoner-form__invisible-label">Rango</p>
         <select
           id="rank"
           onChange={changeSelectData}
@@ -224,8 +235,8 @@ const CreateSummonerForm = ({ handledSummoner }: SummonerProp): JSX.Element => {
           className="new-summoner-form__input"
           defaultValue={handledSummoner ? handledSummoner.firstRole : "Rol 1"}
         >
-          <option hidden value={"Rol 1"}>
-            Rol 1
+          <option hidden value={"Rol"}>
+            Rol
           </option>
           <option value="Top">Top </option>
           <option value="Jungle">Jungla</option>
@@ -233,6 +244,9 @@ const CreateSummonerForm = ({ handledSummoner }: SummonerProp): JSX.Element => {
           <option value="Support">Support</option>
           <option value="Bot">Bot</option>
         </select>
+        <span className="new-summoner-form__champion-text">
+          Elige 3 campeones
+        </span>
         <ChampionListFormStyle>
           <ul>
             {champions.map((champion) => (
