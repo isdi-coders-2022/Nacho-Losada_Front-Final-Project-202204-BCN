@@ -11,7 +11,7 @@ const SummonersPageStyle = styled.ul`
   padding: 0 20px;
 
   li:last-child {
-    margin-bottom: 60px;
+    margin-bottom: 120px;
   }
 `;
 
@@ -31,20 +31,18 @@ const SummonersPage = (): JSX.Element => {
     }
   }, [dispatch, user]);
 
+  let list = ownSummonersList;
+  if (pathname === "/summoners") {
+    list = summonersList;
+  }
+
   return (
     <SummonersPageStyle>
-      {pathname === "/summoners"
-        ? summonersList.map((summoner: ISummoner) => (
-            <li className="summoner" key={summoner.summonerName}>
-              <Summoner summoner={summoner} />
-            </li>
-          ))
-        : ownSummonersList.map((summoner: ISummoner) => (
-            <li className="summoner" key={summoner.summonerName}>
-              <Summoner summoner={summoner} />
-            </li>
-          ))}
-      ;
+      {list.map((summoner: ISummoner) => (
+        <li className="summoner" key={summoner.summonerName}>
+          <Summoner summoner={summoner} />
+        </li>
+      ))}
     </SummonersPageStyle>
   );
 };

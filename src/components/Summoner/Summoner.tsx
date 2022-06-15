@@ -28,8 +28,6 @@ const Summoner = ({
     division,
     firstRole,
     firstRoleChamps,
-    secondRole,
-    secondRoleChamps,
     description,
     id,
   },
@@ -97,12 +95,16 @@ const Summoner = ({
               className="summoner__actions summoner__actions--delete"
               src="/icons/delete.svg"
               alt=""
+              width="24"
+              height="24"
               onClick={() => dispatch(deleteSummonerThunk(id, summonerName))}
             />
             <img
               className="summoner__actions summoner__actions--edit"
               src="/icons/edit.svg"
               alt=""
+              width="24"
+              height="24"
               onClick={() => navigate(`/summoners/edit/${id}`)}
             />
           </>
