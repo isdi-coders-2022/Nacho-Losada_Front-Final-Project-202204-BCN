@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
 import {
   createSummonerThunk,
@@ -30,6 +31,7 @@ export interface SummonerProp {
 const CreateSummonerForm = ({ handledSummoner }: SummonerProp): JSX.Element => {
   const nameOfUser: string = useAppSelector((state) => state.user.name);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const blankData: IFormData = {
     summonerName: handledSummoner ? handledSummoner.summonerName : "",
@@ -101,10 +103,12 @@ const CreateSummonerForm = ({ handledSummoner }: SummonerProp): JSX.Element => {
     event.preventDefault();
     if (handledSummoner) {
       dispatch(editSummonerThunk(handledSummoner.id, formData));
+      navigate("/user/my-summoners");
       return;
     }
 
     dispatch(createSummonerThunk(formData));
+    navigate("/summoners");
     resetForm();
   };
 
