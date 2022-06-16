@@ -5,24 +5,8 @@ import {
   deleteSummonerThunk,
   loadSummonersThunk,
 } from "../../redux/thunks/summonersThunks";
+import { Props } from "../../types/interfaces";
 import SummonerStyle from "./SummonerStyle";
-
-interface Props {
-  summoner: ISummoner;
-}
-
-export interface ISummoner {
-  summonerName: string;
-  creatorName: string;
-  rank: string;
-  division: string;
-  firstRole: string;
-  firstRoleChamps: string[];
-  secondRole: string;
-  secondRoleChamps: string[];
-  description: string;
-  id: string;
-}
 
 const Summoner = ({
   summoner: {

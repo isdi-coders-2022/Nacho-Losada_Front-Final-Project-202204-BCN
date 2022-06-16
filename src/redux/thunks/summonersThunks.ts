@@ -1,7 +1,7 @@
 import axios from "axios";
 import { toast } from "react-toastify";
-import { IFormData } from "../../components/CreateSummoner/CreateSummonerForm";
 import CustomToast from "../../components/CustomToast/CustomToast";
+import { IFormData } from "../../types/interfaces";
 import { errorIcon, warningIcon, successIcon } from "../../utils/icons";
 import {
   deleteSummonerActionCreator,

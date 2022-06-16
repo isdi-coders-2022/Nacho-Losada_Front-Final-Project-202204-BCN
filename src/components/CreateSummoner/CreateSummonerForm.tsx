@@ -7,28 +7,12 @@ import {
   editSummonerThunk,
   loadSummonersThunk,
 } from "../../redux/thunks/summonersThunks";
+import { IFormData, SummonerProp } from "../../types/interfaces";
 import champions from "../../utils/champions";
-import { ISummoner } from "../Summoner/Summoner";
 import {
   ChampionListFormStyle,
   CreateSummonerFormStyle,
 } from "./CreateSummonerFormStyle";
-
-export interface IFormData {
-  summonerName: string;
-  creatorName: string;
-  rank: string;
-  division: string;
-  firstRole: string;
-  firstRoleChamps: string[];
-  secondRole: string;
-  secondRoleChamps: string[];
-  description: string;
-}
-
-export interface SummonerProp {
-  handledSummoner: ISummoner | null | undefined;
-}
 
 const CreateSummonerForm = ({ handledSummoner }: SummonerProp): JSX.Element => {
   const { name } = useAppSelector((state) => state.user);
