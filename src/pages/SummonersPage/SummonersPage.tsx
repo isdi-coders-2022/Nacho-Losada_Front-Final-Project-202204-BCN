@@ -37,6 +37,7 @@ const SummonersPage = (): JSX.Element => {
     list = summonersList;
   }
 
+  window.scrollTo(0, 0);
   return (
     <SummonersPageStyle>
       {list.map((summoner: ISummoner) => (
