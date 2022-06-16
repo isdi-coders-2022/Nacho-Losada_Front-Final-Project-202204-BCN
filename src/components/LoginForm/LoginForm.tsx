@@ -103,10 +103,6 @@ const LoginForm = (): JSX.Element => {
           Login
         </button>
       </form>
-      <p>No tienes cuenta?</p>
-      <p>
-        Registrate <span>aquí</span>
-      </p>
     </LoginFormStyle>
   );
 };

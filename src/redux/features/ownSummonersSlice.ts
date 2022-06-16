@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ISummoner } from "../../components/Summoner/Summoner";
+import { ISummoner } from "../../types/interfaces";
 
 const initialState: ISummoner[] = [];
 

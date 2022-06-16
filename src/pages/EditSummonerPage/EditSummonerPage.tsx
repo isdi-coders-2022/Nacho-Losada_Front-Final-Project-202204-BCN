@@ -2,9 +2,9 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import CreateSummonerForm from "../../components/CreateSummoner/CreateSummonerForm";
-import { ISummoner } from "../../components/Summoner/Summoner";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
 import { loadSummonersThunk } from "../../redux/thunks/summonersThunks";
+import { ISummoner } from "../../types/interfaces";
 
 const CreateSummonerPageStyle = styled.div``;
 

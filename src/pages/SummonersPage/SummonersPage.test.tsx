@@ -2,9 +2,9 @@ import { configureStore, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import { ISummoner } from "../../components/Summoner/Summoner";
 import { mockSummoners } from "../../mocks/mocks";
 import { store } from "../../redux/store/store";
+import { ISummoner } from "../../types/interfaces";
 import SummonersPage from "./SummonersPage";
 
 describe("Given a SummonersPage component", () => {
