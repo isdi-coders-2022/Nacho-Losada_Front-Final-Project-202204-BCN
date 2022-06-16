@@ -101,7 +101,7 @@ const CreateSummonerForm = ({ handledSummoner }: SummonerProp): JSX.Element => {
     navigate("/summoners");
     resetForm();
   };
-
+  window.scrollTo(0, 0);
   return (
     <CreateSummonerFormStyle>
       <form
