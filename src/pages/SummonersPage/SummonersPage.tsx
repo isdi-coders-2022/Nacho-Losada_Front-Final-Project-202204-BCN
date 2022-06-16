@@ -1,10 +1,11 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import styled from "styled-components";
-import Summoner, { ISummoner } from "../../components/Summoner/Summoner";
+import Summoner from "../../components/Summoner/Summoner";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
 import { loadOwnSummonersThunk } from "../../redux/thunks/ownSummonersThunks";
 import { loadSummonersThunk } from "../../redux/thunks/summonersThunks";
+import { ISummoner } from "../../types/interfaces";
 
 const SummonersPageStyle = styled.ul`
   list-style: none;
