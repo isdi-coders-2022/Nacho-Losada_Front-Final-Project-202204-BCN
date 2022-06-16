@@ -34,6 +34,13 @@ const MenuStyled = styled.div`
     opacity: 0;
   }
 
+  .menu__burger-label {
+    font-size: 1px;
+    z-index: -3;
+    display: flex;
+    position: absolute;
+  }
+
   .hamburger {
     position: absolute;
     top: 30px;

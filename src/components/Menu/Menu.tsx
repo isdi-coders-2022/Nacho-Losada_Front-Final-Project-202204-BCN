@@ -49,7 +49,10 @@ const Menu = (): JSX.Element => {
 
   return (
     <MenuStyled>
-      <input type="checkbox" className={`${toggler}`} />
+      <label htmlFor="burger-menu">
+        <span className="menu__burger-label">.</span>
+      </label>
+      <input type="checkbox" id="burger-menu" className={`${toggler}`} />
       <div className="hamburger">
         <div></div>
       </div>
